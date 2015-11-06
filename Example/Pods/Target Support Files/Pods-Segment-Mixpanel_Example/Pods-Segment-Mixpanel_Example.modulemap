@@ -1,0 +1,6 @@
+framework module Pods_Segment_Mixpanel_Example {
+  umbrella header "Pods-Segment-Mixpanel_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
