@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Segment-Mixpanel"
-  s.version          = "2.9.0"
+  s.version          = "2.9.0-alpha"
   s.summary          = "Mixpanel Integration for Segment's analytics-ios library."
 
   s.description      = <<-DESC
