@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+Version 1.0.2 *(24th November, 2015)*
+-------------------------------------------
+*(Supports analytics-ios 3.0.+ and Mixpanel 2.9.+)*
+
+  * Update `registerForRemoteNotificationsWithDeviceToken` to `registeredForRemoteNotificationsWithDeviceToken`.
+
+
 Version 1.0.1 *(24th November, 2015)*
 -------------------------------------------
 *(Supports analytics-ios 3.0.+ and Mixpanel 2.9.+)*
