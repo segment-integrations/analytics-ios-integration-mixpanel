@@ -12,6 +12,7 @@
 #import "SEGSegmentIntegrationFactory.h"
 
 static SEGAnalytics *__sharedInstance = nil;
+NSString *SEGAnalyticsIntegrationDidStart = @"io.segment.analytics.integration.did.start";
 
 
 @interface SEGAnalyticsConfiguration ()
@@ -26,7 +27,7 @@ static SEGAnalytics *__sharedInstance = nil;
 
 + (instancetype)configurationWithWriteKey:(NSString *)writeKey
 {
-    return [[self alloc] initWithWriteKey:writeKey];
+    return [[SEGAnalyticsConfiguration alloc] initWithWriteKey:writeKey];
 }
 
 - (id)initWithWriteKey:(NSString *)writeKey
@@ -289,16 +290,26 @@ static SEGAnalytics *__sharedInstance = nil;
                                options:options];
 }
 
-- (void)registerForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+- (void)receivedRemoteNotification:(NSDictionary *)userInfo
 {
-    [self registerForRemoteNotificationsWithDeviceToken:deviceToken options:nil];
+    [self callIntegrationsWithSelector:_cmd arguments:@[ userInfo ] options:nil];
 }
 
-- (void)registerForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken options:(NSDictionary *)options
+- (void)failedToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    [self callIntegrationsWithSelector:_cmd arguments:@[ error ] options:nil];
+}
+
+- (void)registeredForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     NSParameterAssert(deviceToken != nil);
 
-    [self callIntegrationsWithSelector:_cmd arguments:@[ deviceToken ] options:options];
+    [self callIntegrationsWithSelector:_cmd arguments:@[ deviceToken ] options:nil];
+}
+
+- (void)handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo
+{
+    [self callIntegrationsWithSelector:_cmd arguments:@[ identifier, userInfo ] options:nil];
 }
 
 - (void)reset
@@ -357,6 +368,9 @@ static SEGAnalytics *__sharedInstance = nil;
                 self.integrations[key] = integration;
                 self.registeredIntegrations[key] = @NO;
             }
+            [[NSNotificationCenter defaultCenter] postNotificationName:SEGAnalyticsIntegrationDidStart object:key userInfo:nil];
+        } else {
+            SEGLog(@"No settings for %@. Skipping.", key);
         }
     }
 
@@ -405,7 +419,7 @@ static SEGAnalytics *__sharedInstance = nil;
 
 + (NSString *)version
 {
-    return SEGStringize(ANALYTICS_VERSION);
+    return @"3.0.0";
 }
 
 #pragma mark - Private
@@ -532,7 +546,6 @@ static SEGAnalytics *__sharedInstance = nil;
     return [self.registeredIntegrations copy];
 }
 
-
 @end
 
 
@@ -553,7 +566,17 @@ static SEGAnalytics *__sharedInstance = nil;
 
 - (void)registerPushDeviceToken:(NSData *)deviceToken
 {
-    [self registerForRemoteNotificationsWithDeviceToken:deviceToken];
+    [self registeredForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+- (void)registerForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    [self registeredForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+- (void)registerForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken options:(NSDictionary *)options
+{
+    [self registeredForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
 #pragma clang diagnostic pop
