@@ -4,7 +4,7 @@
 
 @implementation SEGMixpanelIntegration
 
-- (id)initWithSettings:(NSDictionary *)settings
+- (instancetype)initWithSettings:(NSDictionary *)settings
 {
     if (self = [super init]) {
         self.settings = settings;
