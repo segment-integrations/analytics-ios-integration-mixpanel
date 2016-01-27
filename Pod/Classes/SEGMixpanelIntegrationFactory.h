@@ -3,6 +3,6 @@
 
 @interface SEGMixpanelIntegrationFactory : NSObject<SEGIntegrationFactory>
 
-+ (id)instance;
++ (instancetype)instance;
 
 @end
