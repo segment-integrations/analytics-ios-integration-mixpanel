@@ -1,10 +1,10 @@
 PODS:
-  - Analytics (3.0.0)
+  - Analytics (3.0.7)
   - Expecta (1.0.3)
-  - Mixpanel (2.9.0):
-    - Mixpanel/Mixpanel (= 2.9.0)
-  - Mixpanel/Mixpanel (2.9.0)
-  - Segment-Mixpanel (1.0.1):
+  - Mixpanel (2.9.6):
+    - Mixpanel/Mixpanel (= 2.9.6)
+  - Mixpanel/Mixpanel (2.9.6)
+  - Segment-Mixpanel (1.0.3):
     - Analytics (~> 3.0.0)
     - Mixpanel (~> 2.9.0)
   - Specta (1.0.4)
@@ -16,13 +16,13 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   Segment-Mixpanel:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  Analytics: 3ebd9eee7aa18bbf7d6418f2290b0bbf694144d5
+  Analytics: b342fb4f43fa4f97ca6f4358b44d3295217ba294
   Expecta: 9d1bff6c8b0eeee73a166a2ee898892478927a15
-  Mixpanel: 42ae6168effc48481d957f7883dd8514a398738d
-  Segment-Mixpanel: 4b433246ee248eb07170f611e774f445f85f8a41
+  Mixpanel: 048a9f2512ac1bb8bfdecf719da024873f50a9c2
+  Segment-Mixpanel: 4c6bbd4a448b1f043a9a39eda9a5251e857a3c7e
   Specta: 69bb134672aae190a1379ff91df07dad8dd1f869
 
 COCOAPODS: 0.39.0

@@ -56,6 +56,13 @@
 @property (nonatomic, strong, readonly) SEGAnalyticsConfiguration *configuration;
 
 /**
+ * Setup this analytics client instance.
+ *
+ * @param configuration The configuration used to setup the client.
+ */
+- (instancetype)initWithConfiguration:(SEGAnalyticsConfiguration *)configuration;
+
+/**
  * Setup the analytics client.
  *
  * @param configuration The configuration used to setup the client.
@@ -87,6 +94,8 @@
  generate the UUID and Apple's policies on IDs, see https://segment.io/libraries/ios#ids
 
  @param traits        A dictionary of traits you know about the user. Things like: email, name, plan, etc.
+
+ @param options       A dictionary of options, such as the `@"anonymousId"` key. If no anonymous ID is specified one will be generated for you.
 
  @discussion
  When you learn more about who your user is, you can record that information with identify.
@@ -246,7 +255,7 @@
 @interface SEGAnalytics (Deprecated)
 
 + (void)initializeWithWriteKey:(NSString *)writeKey __attribute__((deprecated("Use +setupWithConfiguration: instead")));
-- (id)initWithWriteKey:(NSString *)writeKey __attribute__((deprecated("Use -initWithConfiguration: instead")));
+- (instancetype)initWithWriteKey:(NSString *)writeKey __attribute__((deprecated("Use -initWithConfiguration: instead")));
 - (void)registerPushDeviceToken:(NSData *)deviceToken __attribute__((deprecated("Use -registerForRemoteNotificationsWithDeviceToken: instead")));
 - (void)registerForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken __attribute__((deprecated("Use -registeredForRemoteNotificationsWithDeviceToken: instead")));
 - (void)registerForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken options:(NSDictionary *)options __attribute__((deprecated("Use -registeredForRemoteNotificationsWithDeviceToken: instead")));
