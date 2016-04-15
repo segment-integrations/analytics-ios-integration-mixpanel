@@ -10,6 +10,7 @@ end
 target 'Segment-Mixpanel_Tests', :exclusive => true do
   pod "Segment-Mixpanel", :path => "../"
 
+  pod 'OCMockito'
   pod 'Specta'
   pod 'Expecta'
 end

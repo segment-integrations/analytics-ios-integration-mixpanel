@@ -88,6 +88,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Segment-Mixpanel_Tests/Mixpanel.framework"
   install_framework "Pods-Segment-Mixpanel_Tests/Segment_Mixpanel.framework"
   install_framework "Pods-Segment-Mixpanel_Tests/Expecta.framework"
+  install_framework "Pods-Segment-Mixpanel_Tests/OCHamcrest.framework"
+  install_framework "Pods-Segment-Mixpanel_Tests/OCMockito.framework"
   install_framework "Pods-Segment-Mixpanel_Tests/Specta.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -95,5 +97,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Segment-Mixpanel_Tests/Mixpanel.framework"
   install_framework "Pods-Segment-Mixpanel_Tests/Segment_Mixpanel.framework"
   install_framework "Pods-Segment-Mixpanel_Tests/Expecta.framework"
+  install_framework "Pods-Segment-Mixpanel_Tests/OCHamcrest.framework"
+  install_framework "Pods-Segment-Mixpanel_Tests/OCMockito.framework"
   install_framework "Pods-Segment-Mixpanel_Tests/Specta.framework"
 fi

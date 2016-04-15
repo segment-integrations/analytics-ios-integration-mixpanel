@@ -1,6 +1,7 @@
 #import "SEGMixpanelIntegrationFactory.h"
 #import "SEGMixpanelIntegration.h"
 
+
 @implementation SEGMixpanelIntegrationFactory
 
 + (instancetype)instance

@@ -1,6 +1,6 @@
 #import "SEGMixpanelIntegration.h"
-#import <Mixpanel/Mixpanel.h>
 #import <Analytics/SEGAnalyticsUtils.h>
+
 
 @implementation SEGMixpanelIntegration
 
@@ -9,7 +9,16 @@
     if (self = [super init]) {
         self.settings = settings;
         NSString *token = [self.settings objectForKey:@"token"];
-        [Mixpanel sharedInstanceWithToken:token];
+        self.mixpanel = [Mixpanel sharedInstanceWithToken:token];
+    }
+    return self;
+}
+
+- (instancetype)initWithSettings:(NSDictionary *)settings andMixpanel:(Mixpanel *)mixpanel
+{
+    if (self = [super init]) {
+        self.settings = settings;
+        self.mixpanel = mixpanel;
     }
     return self;
 }
@@ -18,7 +27,7 @@
 {
     NSMutableDictionary *mapped = [NSMutableDictionary dictionaryWithDictionary:dictionary];
 
-    [map enumerateKeysAndObjectsUsingBlock:^(NSString *original, NSString *new, BOOL* stop) {
+    [map enumerateKeysAndObjectsUsingBlock:^(NSString *original, NSString *new, BOOL *stop) {
         id data = [mapped objectForKey:original];
         if (data) {
             [mapped setObject:data forKey:new];
@@ -33,33 +42,33 @@
 {
     // Ensure that the userID is set and valid (i.e. a non-empty string).
     if (payload.userId != nil && [payload.userId length] != 0) {
-        [[Mixpanel sharedInstance] identify:payload.userId];
+        [self.mixpanel identify:payload.userId];
         SEGLog(@"[[Mixpanel sharedInstance] identify:%@]", payload.userId);
     }
 
     // Map the traits to special mixpanel properties.
     NSDictionary *map = [NSDictionary dictionaryWithObjectsAndKeys:
-                         @"$first_name", @"firstName",
-                         @"$last_name", @"lastName",
-                         @"$created", @"createdAt",
-                         @"$last_seen", @"lastSeen",
-                         @"$email", @"email",
-                         @"$name", @"name",
-                         @"$username", @"username",
-                         @"$phone", @"phone", nil];
+                                          @"$first_name", @"firstName",
+                                          @"$last_name", @"lastName",
+                                          @"$created", @"createdAt",
+                                          @"$last_seen", @"lastSeen",
+                                          @"$email", @"email",
+                                          @"$name", @"name",
+                                          @"$username", @"username",
+                                          @"$phone", @"phone", nil];
 
     if ([self setAllTraitsByDefault]) {
         NSDictionary *mappedTraits = [SEGMixpanelIntegration map:payload.traits withMap:map];
 
         // Register the mapped traits.
-        [[Mixpanel sharedInstance] registerSuperProperties:mappedTraits];
+        [self.mixpanel registerSuperProperties:mappedTraits];
         SEGLog(@"[[Mixpanel sharedInstance] registerSuperProperties:%@]", mappedTraits);
 
         // Mixpanel also has a people API that works seperately, so we set the traits for it as well.
         if ([self peopleEnabled]) {
             // You'll notice that we could also have done: [Mixpanel.sharedInstance.people set:mappedTraits];
             // Using methods instead of properties directly lets us mock them in tests, which is why we use the syntax below.
-            [[[Mixpanel sharedInstance] people] set:mappedTraits];
+            [[self.mixpanel people] set:mappedTraits];
             SEGLog(@"[[[Mixpanel sharedInstance] people] set:%@]", mappedTraits);
         }
 
@@ -73,7 +82,7 @@
         superPropertyTraits[superProperty] = payload.traits[superProperty];
     }
     NSDictionary *mappedSuperProperties = [SEGMixpanelIntegration map:superPropertyTraits withMap:map];
-    [[Mixpanel sharedInstance] registerSuperProperties:mappedSuperProperties];
+    [self.mixpanel registerSuperProperties:mappedSuperProperties];
     SEGLog(@"[[Mixpanel sharedInstance] registerSuperProperties:%@]", mappedSuperProperties);
 
     if ([self peopleEnabled]) {
@@ -83,7 +92,7 @@
             peoplePropertyTraits[peopleProperty] = payload.traits[peopleProperty];
         }
         NSDictionary *mappedPeopleProperties = [SEGMixpanelIntegration map:peoplePropertyTraits withMap:map];
-        [[[Mixpanel sharedInstance] people] set:mappedPeopleProperties];
+        [[self.mixpanel people] set:mappedPeopleProperties];
         SEGLog(@"[[[Mixpanel sharedInstance] people] set:%@]", mappedSuperProperties);
     }
 }
@@ -141,7 +150,7 @@
 - (void)realTrack:(NSString *)event properties:(NSDictionary *)properties
 {
     // Track the raw event.
-    [[Mixpanel sharedInstance] track:event properties:properties];
+    [self.mixpanel track:event properties:properties];
 
     // Don't go any further if Mixpanel people is disabled.
     if (![self peopleEnabled]) {
@@ -152,29 +161,28 @@
     NSNumber *revenue = [SEGMixpanelIntegration extractRevenue:properties withKey:@"revenue"];
     // Check if there was a revenue.
     if (revenue) {
-        [[[Mixpanel sharedInstance] people] trackCharge:revenue];
+        [[self.mixpanel people] trackCharge:revenue];
         SEGLog(@"[[[Mixpanel sharedInstance] people] trackCharge:%@]", revenue);
     }
 
     // Mixpanel has the ability keep a running 'count' events. So we check if this is an event
     // that should be incremented (by checking the settings).
     if ([self eventShouldIncrement:event]) {
-        [[[Mixpanel sharedInstance] people] increment:event by:@1];
+        [[self.mixpanel people] increment:event by:@1];
         SEGLog(@"[[[Mixpanel sharedInstance] people] increment:%@ by:1]", event);
 
         NSString *lastEvent = [NSString stringWithFormat:@"Last %@", event];
         NSDate *lastDate = [NSDate date];
-        [[[Mixpanel sharedInstance] people] set:lastEvent to:lastDate];
+        [[self.mixpanel people] set:lastEvent to:lastDate];
         SEGLog(@"[[[Mixpanel sharedInstance] people] set:%@ to:%@]", lastEvent, lastDate);
     }
-
 }
 
 - (void)alias:(SEGAliasPayload *)payload
 {
     // Instead of using our own anonymousId, we use Mixpanel's own generated Id.
-    NSString *distinctId = [[Mixpanel sharedInstance] distinctId];
-    [[Mixpanel sharedInstance] createAlias:payload.theNewId forDistinctID:distinctId];
+    NSString *distinctId = [self.mixpanel distinctId];
+    [self.mixpanel createAlias:payload.theNewId forDistinctID:distinctId];
     SEGLog(@"[[Mixpanel sharedInstance] createAlias:%@ forDistinctID:%@]", payload.theNewId, distinctId);
 }
 
@@ -182,7 +190,7 @@
 // Mixpanel uses this to send push messages to the device, so forward it to Mixpanel.
 - (void)registeredForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    [[[Mixpanel sharedInstance] people] addPushDeviceToken:deviceToken];
+    [[self.mixpanel people] addPushDeviceToken:deviceToken];
     SEGLog(@"[[[[Mixpanel sharedInstance] people] addPushDeviceToken:%@]", deviceToken);
 }
 
@@ -214,13 +222,13 @@
 {
     [self flush];
 
-    [[Mixpanel sharedInstance] reset];
+    [self.mixpanel reset];
     SEGLog(@"[[Mixpanel sharedInstance] reset]");
 }
 
 - (void)flush
 {
-    [[Mixpanel sharedInstance] flush];
+    [self.mixpanel flush];
     SEGLog(@"[[Mixpanel sharedInstance] flush]");
 }
 
