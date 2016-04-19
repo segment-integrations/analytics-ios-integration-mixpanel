@@ -21,6 +21,8 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		6E93A9E71CC5764000E1C88C /* SEGPayloadBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E93A9E61CC5764000E1C88C /* SEGPayloadBuilder.m */; };
+		6E93A9E81CC5764000E1C88C /* SEGPayloadBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E93A9E61CC5764000E1C88C /* SEGPayloadBuilder.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		AA76859F1FA3E4E066E05405 /* Pods_Segment_Mixpanel_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BF16ABCD508AD4B0310F43 /* Pods_Segment_Mixpanel_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +62,8 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		6E93A9E51CC5764000E1C88C /* SEGPayloadBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEGPayloadBuilder.h; sourceTree = "<group>"; };
+		6E93A9E61CC5764000E1C88C /* SEGPayloadBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEGPayloadBuilder.m; sourceTree = "<group>"; };
 		737FF6CD5A19960160FB7478 /* Pods-Segment-Mixpanel_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Segment-Mixpanel_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Segment-Mixpanel_Tests/Pods-Segment-Mixpanel_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A1BF16ABCD508AD4B0310F43 /* Pods_Segment_Mixpanel_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Segment_Mixpanel_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				6003F5BB195388D20070C39A /* Tests.m */,
+				6E93A9E51CC5764000E1C88C /* SEGPayloadBuilder.h */,
+				6E93A9E61CC5764000E1C88C /* SEGPayloadBuilder.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
 			path = Tests;
@@ -392,6 +398,7 @@
 			files = (
 				6003F59E195388D20070C39A /* SEGAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* SEGViewController.m in Sources */,
+				6E93A9E71CC5764000E1C88C /* SEGPayloadBuilder.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E93A9E81CC5764000E1C88C /* SEGPayloadBuilder.m in Sources */,
 				6003F5BC195388D20070C39A /* Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

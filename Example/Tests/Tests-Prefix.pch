@@ -4,5 +4,9 @@
 
   @import Specta;
   @import Expecta;
+  @import OCMockito;
+  @import Analytics;
+  @import Mixpanel;
+  @import Segment_Mixpanel;
 
 #endif
