@@ -104,6 +104,16 @@
 
 - (void)screen:(SEGScreenPayload *)payload
 {
+    if ([(NSNumber *)[self.settings objectForKey:@"consolidatedPageCalls"] boolValue]) {
+        NSMutableDictionary *payloadProps = [NSMutableDictionary dictionaryWithDictionary:payload.properties];
+        NSString *event = [[NSString alloc] initWithFormat:@"Loaded a Screen"];
+        if (payload.name) {
+            [payloadProps setValue:payload.name forKey:@"name"];
+        }
+        [self realTrack:event properties:payloadProps];
+        return;
+    }
+    
     if ([(NSNumber *)[self.settings objectForKey:@"trackAllPages"] boolValue]) {
         NSString *event = [[NSString alloc] initWithFormat:@"Viewed %@ Screen", payload.name];
         [self realTrack:event properties:payload.properties];
