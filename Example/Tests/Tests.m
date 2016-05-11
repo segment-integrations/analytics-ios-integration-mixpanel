@@ -66,7 +66,7 @@ describe(@"Mixpanel Integration", ^{
     
     it(@"screen with consolidatedPageCalls", ^{
         [integration setSettings:@{
-            @"consolidatedPageCalls" : @true
+            @"consolidatedPageCalls" : @1
         }];
         [integration screen:[SEGPayloadBuilder screen:@"Home"]];
         
