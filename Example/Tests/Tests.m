@@ -10,7 +10,7 @@
 
 #import "SEGPayloadBuilder.h"
 
-SpecBegin(InitialSpecs);
+SpecBegin(InitialSpecs)
 
 describe(@"Mixpanel Integration", ^{
     __block SEGMixpanelIntegration *integration;
@@ -62,6 +62,15 @@ describe(@"Mixpanel Integration", ^{
         [integration screen:[SEGPayloadBuilder screen:@"Home"]];
 
         [verify(mixpanel) track:@"Viewed Home Screen" properties:@{}];
+    });
+    
+    it(@"screen with consolidatedPageCalls", ^{
+        [integration setSettings:@{
+            @"consolidatedPageCalls" : @1
+        }];
+        [integration screen:[SEGPayloadBuilder screen:@"Home"]];
+        
+        [verify(mixpanel) track:@"Loaded a Screen" properties:@{@"name": @"Home"}];
     });
 
     it(@"identify", ^{

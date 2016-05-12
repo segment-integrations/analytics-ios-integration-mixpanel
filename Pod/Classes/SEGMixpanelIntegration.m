@@ -104,21 +104,35 @@
 
 - (void)screen:(SEGScreenPayload *)payload
 {
+    if ([(NSNumber *)[self.settings objectForKey:@"consolidatedPageCalls"] boolValue]) {
+        NSMutableDictionary *payloadProps = [NSMutableDictionary dictionaryWithDictionary:payload.properties];
+        NSString *event = [[NSString alloc] initWithFormat:@"Loaded a Screen"];
+        if (payload.name) {
+            [payloadProps setValue:payload.name forKey:@"name"];
+        }
+        [self realTrack:event properties:payloadProps];
+        SEGLog(@"[[Mixpanel sharedInstance] track:'Loaded a Screen' properties:%@]", payloadProps);
+        return;
+    }
+    
     if ([(NSNumber *)[self.settings objectForKey:@"trackAllPages"] boolValue]) {
         NSString *event = [[NSString alloc] initWithFormat:@"Viewed %@ Screen", payload.name];
         [self realTrack:event properties:payload.properties];
+        SEGLog(@"[[Mixpanel sharedInstance] track:'Viewed %@ Screen' properties:%@]", payload.name, payload.properties);
         return;
     }
 
     if ([(NSNumber *)[self.settings objectForKey:@"trackNamedPages"] boolValue] && payload.name) {
         NSString *event = [[NSString alloc] initWithFormat:@"Viewed %@ Screen", payload.name];
         [self realTrack:event properties:payload.properties];
+        SEGLog(@"[[Mixpanel sharedInstance] track:'Viewed %@ Screen' properties:%@]", payload.name, payload.properties);
         return;
     }
 
     NSString *category = [payload.properties objectForKey:@"category"];
     if ([(NSNumber *)[self.settings objectForKey:@"trackCategorizedPages"] boolValue] && category) {
         NSString *event = [[NSString alloc] initWithFormat:@"Viewed %@ Screen", category];
+        SEGLog(@"[[Mixpanel sharedInstance] track:'Viewed %@ Screen' properties:%@]", category, payload.properties);
         [self realTrack:event properties:payload.properties];
     }
 }
