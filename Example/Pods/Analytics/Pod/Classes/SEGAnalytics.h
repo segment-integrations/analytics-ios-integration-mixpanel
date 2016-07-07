@@ -1,6 +1,11 @@
 #import <Foundation/Foundation.h>
 #import "SEGIntegrationFactory.h"
 
+/**
+ * NSNotification name, that is posted after integrations are loaded.
+ */
+extern NSString *SEGAnalyticsIntegrationDidStart;
+
 @protocol SEGIntegrationFactory;
 
 /**
@@ -37,6 +42,21 @@
  */
 @property (nonatomic, assign) NSUInteger flushAt;
 
+
+/**
+ * Whether the analytics client should automatically make a track call for application lifecycle events, such as "Application Installed", "Application Updated" and "Application Opened".
+ */
+@property (nonatomic, assign) BOOL trackApplicationLifecycleEvents;
+
+/**
+ * Whether the analytics client should automatically make a screen call when a view controller is added to a view hierarchy. Because the underlying implementation uses method swizzling, we recommend initializing the analytics client as early as possible (before any screens are displayed), ideally during the Application delegate's applicationDidFinishLaunching method.
+ */
+@property (nonatomic, assign) BOOL recordScreenViews;
+
+/**
+ * Whether the analytics client should automatically track in-app purchases from the App Store.
+ */
+@property (nonatomic, assign) BOOL trackInAppPurchases;
 
 /**
  * Register a factory that can be used to create an integration.

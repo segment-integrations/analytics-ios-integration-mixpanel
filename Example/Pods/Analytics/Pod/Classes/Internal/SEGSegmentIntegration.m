@@ -13,6 +13,7 @@
 #import "SEGBluetooth.h"
 #import "SEGReachability.h"
 #import "SEGLocation.h"
+#import "NSData+GZIP.h"
 #import <iAd/iAd.h>
 
 NSString *const SEGSegmentDidSendRequestNotification = @"SegmentDidSendRequest";
@@ -93,9 +94,29 @@ static BOOL GetAdTrackingEnabled()
         self.serialQueue = seg_dispatch_queue_create_specific("io.segment.analytics.segmentio", DISPATCH_QUEUE_SERIAL);
         self.flushTaskID = UIBackgroundTaskInvalid;
         self.analytics = analytics;
+        // Check for previous queue/track data in NSUserDefaults and remove if present
+        [self dispatchBackground:^{
+            if ([[NSUserDefaults standardUserDefaults] objectForKey:SEGQueueKey]) {
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:SEGQueueKey];
+            }
+            if ([[NSUserDefaults standardUserDefaults] objectForKey:SEGTraitsKey]) {
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:SEGTraitsKey];
+            }
+        }];
     }
     return self;
 }
+
+/*
+ * There is an iOS bug that causes instances of the CTTelephonyNetworkInfo class to
+ * sometimes get notifications after they have been deallocated.
+ * Instead of instantiating, using, and releasing instances you * must instead retain
+ * and never release them to work around the bug.
+ *
+ * Ref: http://stackoverflow.com/questions/14238586/coretelephony-crash
+ */
+
+static CTTelephonyNetworkInfo *_telephonyNetworkInfo;
 
 - (NSDictionary *)staticContext
 {
@@ -139,7 +160,12 @@ static BOOL GetAdTrackingEnabled()
         @"version" : device.systemVersion
     };
 
-    CTCarrier *carrier = [[[CTTelephonyNetworkInfo alloc] init] subscriberCellularProvider];
+    static dispatch_once_t networkInfoOnceToken;
+    dispatch_once(&networkInfoOnceToken, ^{
+        _telephonyNetworkInfo = [[CTTelephonyNetworkInfo alloc] init];
+    });
+
+    CTCarrier *carrier = [_telephonyNetworkInfo subscriberCellularProvider];
     if (carrier.carrierName.length)
         dict[@"network"] = @{ @"carrier" : carrier.carrierName };
 
@@ -254,7 +280,6 @@ static BOOL GetAdTrackingEnabled()
 {
     [self dispatchBackground:^{
         self.userId = userId;
-        [[NSUserDefaults standardUserDefaults] setValue:userId forKey:SEGUserIdKey];
         [self.userId writeToURL:self.userIDURL atomically:YES encoding:NSUTF8StringEncoding error:NULL];
     }];
 }
@@ -272,7 +297,6 @@ static BOOL GetAdTrackingEnabled()
 {
     [self dispatchBackground:^{
         [self.traits addEntriesFromDictionary:traits];
-        [[NSUserDefaults standardUserDefaults] setObject:[self.traits copy] forKey:SEGTraitsKey];
         [[self.traits copy] writeToURL:self.traitsURL atomically:YES];
     }];
 }
@@ -332,7 +356,7 @@ static BOOL GetAdTrackingEnabled()
     [self enqueueAction:@"alias" dictionary:dictionary context:payload.context integrations:payload.integrations];
 }
 
-- (void)registerForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken options:(NSDictionary *)options
+- (void)registeredForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     NSCParameterAssert(deviceToken != nil);
 
@@ -394,7 +418,20 @@ static BOOL GetAdTrackingEnabled()
 {
     @try {
         [self.queue addObject:payload];
-        [self persistQueue];
+        [[self.queue copy] writeToURL:[self queueURL] atomically:YES];
+        [self flushQueueByLength];
+
+    }
+    @catch (NSException *exception) {
+        SEGLog(@"%@ Error writing payload: %@", self, exception);
+    }
+}
+
+- (void)queuePayloadFromArray:(NSArray *)payloadArray
+{
+    @try {
+        [self.queue addObjectsFromArray:payloadArray];
+        [[self.queue copy] writeToURL:[self queueURL] atomically:YES];
         [self flushQueueByLength];
 
     }
@@ -466,8 +503,6 @@ static BOOL GetAdTrackingEnabled()
     [self dispatchBackgroundAndWait:^{
         [[NSUserDefaults standardUserDefaults] setValue:nil forKey:SEGUserIdKey];
         [[NSUserDefaults standardUserDefaults] setValue:nil forKey:SEGAnonymousIdKey];
-        [[NSUserDefaults standardUserDefaults] setValue:@[] forKey:SEGQueueKey];
-        [[NSUserDefaults standardUserDefaults] setValue:nil forKey:SEGTraitsKey];
         [[NSFileManager defaultManager] removeItemAtURL:self.userIDURL error:NULL];
         [[NSFileManager defaultManager] removeItemAtURL:self.traitsURL error:NULL];
         [[NSFileManager defaultManager] removeItemAtURL:self.queueURL error:NULL];
@@ -492,9 +527,10 @@ static BOOL GetAdTrackingEnabled()
 {
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:self.apiURL];
     [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+    [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Content-Encoding"];
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:data];
+    [urlRequest setHTTPBody:[data seg_gzippedData]];
 
     SEGLog(@"%@ Sending batch API request.", self);
     self.request = [SEGAnalyticsRequest startWithURLRequest:urlRequest
@@ -506,7 +542,7 @@ static BOOL GetAdTrackingEnabled()
                                                          } else {
                                                              SEGLog(@"%@ API request success 200", self);
                                                              [self.queue removeObjectsInArray:self.batch];
-                                                             [self persistQueue];
+                                                             [[self.queue copy] writeToURL:[self queueURL] atomically:YES];
                                                              [self notifyForName:SEGSegmentRequestDidSucceedNotification userInfo:self.batch];
                                                          }
 
@@ -530,8 +566,7 @@ static BOOL GetAdTrackingEnabled()
 {
     [self dispatchBackgroundAndWait:^{
         if (self.queue.count)
-            
-            [self persistQueue];
+            [[self.queue copy] writeToURL:self.queueURL atomically:YES];
     }];
 }
 
@@ -540,7 +575,7 @@ static BOOL GetAdTrackingEnabled()
 - (NSMutableArray *)queue
 {
     if (!_queue) {
-        _queue = ([[[NSUserDefaults standardUserDefaults] objectForKey:SEGQueueKey] mutableCopy] ?: [NSMutableArray arrayWithContentsOfURL:self.queueURL]) ?: [[NSMutableArray alloc] init];
+        _queue = [NSMutableArray arrayWithContentsOfURL:self.queueURL] ?: [[NSMutableArray alloc] init];
     }
     return _queue;
 }
@@ -548,7 +583,7 @@ static BOOL GetAdTrackingEnabled()
 - (NSMutableDictionary *)traits
 {
     if (!_traits) {
-        _traits = ([[[NSUserDefaults standardUserDefaults] objectForKey:SEGTraitsKey] mutableCopy] ?: [NSMutableDictionary dictionaryWithContentsOfURL:self.traitsURL]) ?: [[NSMutableDictionary alloc] init];
+        _traits = [NSMutableDictionary dictionaryWithContentsOfURL:self.traitsURL] ?: [[NSMutableDictionary alloc] init];
     }
     return _traits;
 }
@@ -577,13 +612,6 @@ static BOOL GetAdTrackingEnabled()
 {
     return SEGAnalyticsURLForFilename(@"segmentio.traits.plist");
 }
-
-- (void)persistQueue
-{
-    [[NSUserDefaults standardUserDefaults] setValue:[self.queue copy] forKey:SEGQueueKey];
-    [[self.queue copy] writeToURL:self.queueURL atomically:YES];
-}
-
 
 - (NSString *)getAnonymousId:(BOOL)reset
 {

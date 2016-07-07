@@ -1,6 +1,5 @@
 # Analytics
 
-[![CI Status](https://img.shields.io/travis/segmentio/analytics-ios.svg?style=flat)](https://travis-ci.org/segmentio/analytics-ios)
 [![Version](https://img.shields.io/cocoapods/v/Analytics.svg?style=flat)](https://cocoapods.org//pods/Analytics)
 [![License](https://img.shields.io/cocoapods/l/Analytics.svg?style=flat)](http://cocoapods.org/pods/Analytics)
 
@@ -40,7 +39,7 @@ WWWWWW||WWWWWW
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Segment, Inc.
+Copyright (c) 2016 Segment, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

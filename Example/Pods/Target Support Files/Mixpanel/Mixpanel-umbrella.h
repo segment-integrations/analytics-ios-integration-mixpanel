@@ -1,6 +1,8 @@
 #import <UIKit/UIKit.h>
 
 #import "_MPTweakBindObserver.h"
+#import "AutomaticEventsConstants.h"
+#import "Mixpanel+AutomaticEvents.h"
 #import "Mixpanel.h"
 #import "MixpanelExceptionHandler.h"
 #import "MPAbstractABTestDesignerMessage.h"
@@ -34,11 +36,13 @@
 #import "MPObjectSerializerConfig.h"
 #import "MPObjectSerializerContext.h"
 #import "MPPropertyDescription.h"
+#import "MPResources.h"
 #import "MPSequenceGenerator.h"
 #import "MPSurvey.h"
 #import "MPSurveyNavigationController.h"
 #import "MPSurveyQuestion.h"
 #import "MPSurveyQuestionViewController.h"
+#import "MPSwizzle.h"
 #import "MPSwizzler.h"
 #import "MPTweak.h"
 #import "MPTweakInline.h"
@@ -52,10 +56,13 @@
 #import "MPWebSocket.h"
 #import "NSData+MPBase64.h"
 #import "NSInvocation+MPHelpers.h"
+#import "NSNotificationCenter+AutomaticEvents.h"
+#import "UIApplication+AutomaticEvents.h"
 #import "UIColor+MPColor.h"
 #import "UIImage+MPAverageColor.h"
 #import "UIImage+MPImageEffects.h"
 #import "UIView+MPHelpers.h"
+#import "UIViewController+AutomaticEvents.h"
 
 FOUNDATION_EXPORT double MixpanelVersionNumber;
 FOUNDATION_EXPORT const unsigned char MixpanelVersionString[];
