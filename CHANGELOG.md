@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.0.5 *(7th July, 2016)*
+-------------------------------------------
+*(Supports analytics-ios 3.0)*
+    
+    * Supports any version greater than 3.0 and less than 4.0.
+
 Version 1.0.4 *(12th May, 2016)*
 -------------------------------------------
 *(Supports analytics-ios 3.0.+ and Mixpanel 2.9.+)*
