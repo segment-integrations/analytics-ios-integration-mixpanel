@@ -5,11 +5,12 @@
 #import "SEGAnalyticsUtils.h"
 #import "SEGAnalyticsRequest.h"
 #import "SEGAnalytics.h"
-
 #import "SEGIntegrationFactory.h"
 #import "SEGIntegration.h"
-#import <objc/runtime.h>
 #import "SEGSegmentIntegrationFactory.h"
+#import "UIViewController+SEGScreen.h"
+#import "SEGStoreKitTracker.h"
+#import <objc/runtime.h>
 
 static SEGAnalytics *__sharedInstance = nil;
 NSString *SEGAnalyticsIntegrationDidStart = @"io.segment.analytics.integration.did.start";
@@ -75,6 +76,7 @@ NSString *SEGAnalyticsIntegrationDidStart = @"io.segment.analytics.integration.d
 @property (nonatomic, strong) NSMutableDictionary *integrations;
 @property (nonatomic, strong) NSMutableDictionary *registeredIntegrations;
 @property (nonatomic) volatile BOOL initialized;
+@property (nonatomic, strong) SEGStoreKitTracker *storeKitTracker;
 
 @end
 
@@ -123,12 +125,64 @@ NSString *SEGAnalyticsIntegrationDidStart = @"io.segment.analytics.integration.d
                                   UIApplicationDidBecomeActiveNotification ]) {
             [nc addObserver:self selector:@selector(handleAppStateNotification:) name:name object:nil];
         }
+
+        if (configuration.recordScreenViews) {
+            [UIViewController seg_swizzleViewDidAppear];
+        }
+        if (configuration.trackInAppPurchases) {
+            _storeKitTracker = [SEGStoreKitTracker trackTransactionsForAnalytics:self];
+        }
+        [self trackApplicationLifecycleEvents:configuration.trackApplicationLifecycleEvents];
     }
     return self;
 }
 
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
 #pragma mark - NSNotificationCenter Callback
+NSString *const SEGVersionKey = @"SEGVersionKey";
+NSString *const SEGBuildKey = @"SEGBuildKey";
+
+- (void)trackApplicationLifecycleEvents:(BOOL)trackApplicationLifecycleEvents
+{
+    if (!trackApplicationLifecycleEvents) {
+        return;
+    }
+
+    NSString *previousVersion = [[NSUserDefaults standardUserDefaults] stringForKey:SEGVersionKey];
+    NSInteger previousBuild = [[NSUserDefaults standardUserDefaults] integerForKey:SEGBuildKey];
+
+    NSString *currentVersion = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
+    NSInteger currentBuild = [[[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"] integerValue];
+
+    if (!previousBuild) {
+        [self track:@"Application Installed" properties:@{
+            @"version" : currentVersion,
+            @"build" : @(currentBuild)
+        }];
+    } else if (currentBuild != previousBuild) {
+        [self track:@"Application Updated" properties:@{
+            @"previous_version" : previousVersion,
+            @"previous_build" : @(previousBuild),
+            @"version" : currentVersion,
+            @"build" : @(currentBuild)
+        }];
+    }
+
+
+    [self track:@"Application Opened" properties:@{
+        @"version" : currentVersion,
+        @"build" : @(currentBuild)
+    }];
+
+    [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:SEGVersionKey];
+    [[NSUserDefaults standardUserDefaults] setInteger:currentBuild forKey:SEGBuildKey];
+}
 
 
 - (void)onAppForeground:(NSNotification *)note
@@ -143,19 +197,19 @@ NSString *SEGAnalyticsIntegrationDidStart = @"io.segment.analytics.integration.d
     static dispatch_once_t selectorMappingOnce;
     dispatch_once(&selectorMappingOnce, ^{
         selectorMapping = @{
-                            UIApplicationDidFinishLaunchingNotification :
-                                NSStringFromSelector(@selector(applicationDidFinishLaunching:)),
-                            UIApplicationDidEnterBackgroundNotification :
-                                NSStringFromSelector(@selector(applicationDidEnterBackground)),
-                            UIApplicationWillEnterForegroundNotification :
-                                NSStringFromSelector(@selector(applicationWillEnterForeground)),
-                            UIApplicationWillTerminateNotification :
-                                NSStringFromSelector(@selector(applicationWillTerminate)),
-                            UIApplicationWillResignActiveNotification :
-                                NSStringFromSelector(@selector(applicationWillResignActive)),
-                            UIApplicationDidBecomeActiveNotification :
-                                NSStringFromSelector(@selector(applicationDidBecomeActive))
-                            };
+            UIApplicationDidFinishLaunchingNotification :
+                NSStringFromSelector(@selector(applicationDidFinishLaunching:)),
+            UIApplicationDidEnterBackgroundNotification :
+                NSStringFromSelector(@selector(applicationDidEnterBackground)),
+            UIApplicationWillEnterForegroundNotification :
+                NSStringFromSelector(@selector(applicationWillEnterForeground)),
+            UIApplicationWillTerminateNotification :
+                NSStringFromSelector(@selector(applicationWillTerminate)),
+            UIApplicationWillResignActiveNotification :
+                NSStringFromSelector(@selector(applicationWillResignActive)),
+            UIApplicationDidBecomeActiveNotification :
+                NSStringFromSelector(@selector(applicationDidBecomeActive))
+        };
     });
     SEL selector = NSSelectorFromString(selectorMapping[note.name]);
     if (selector) {
@@ -428,7 +482,7 @@ NSString *SEGAnalyticsIntegrationDidStart = @"io.segment.analytics.integration.d
 
 + (NSString *)version
 {
-    return @"3.0.7";
+    return @"3.2.5";
 }
 
 #pragma mark - Private
@@ -490,7 +544,8 @@ NSString *SEGAnalyticsIntegrationDidStart = @"io.segment.analytics.integration.d
 
     NSString *eventType = NSStringFromSelector(selector);
     if ([eventType hasPrefix:@"track:"]) {
-        BOOL enabled = [self isTrackEvent:arguments[0] enabledForIntegration:key inPlan:self.cachedSettings[@"plan"]];
+        SEGTrackPayload *eventPayload = arguments[0];
+        BOOL enabled = [self isTrackEvent:eventPayload.event enabledForIntegration:key inPlan:self.cachedSettings[@"plan"]];
         if (!enabled) {
             SEGLog(@"Not sending call to %@ because it is disabled in plan.", key);
             return;

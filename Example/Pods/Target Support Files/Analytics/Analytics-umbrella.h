@@ -8,6 +8,7 @@
 #import "SEGPayload.h"
 #import "SEGScreenPayload.h"
 #import "SEGTrackPayload.h"
+#import "NSData+GZIP.h"
 #import "SEGAnalyticsRequest.h"
 #import "SEGAnalyticsUtils.h"
 #import "SEGBluetooth.h"
@@ -15,6 +16,8 @@
 #import "SEGReachability.h"
 #import "SEGSegmentIntegration.h"
 #import "SEGSegmentIntegrationFactory.h"
+#import "SEGStoreKitTracker.h"
+#import "UIViewController+SEGScreen.h"
 #import "SEGAnalytics.h"
 
 FOUNDATION_EXPORT double AnalyticsVersionNumber;
