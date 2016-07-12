@@ -42,7 +42,6 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <Security/SecRandom.h>
 #import "MPLogger.h"
-#import "NSData+MPBase64.h"
 
 #if OS_OBJECT_USE_OBJC_RETAIN_RELEASE
 #define mp_dispatch_retain(x)
@@ -138,7 +137,7 @@ static NSData *newSHA1(const char *bytes, size_t length) {
 
 - (NSString *)stringBySHA1ThenBase64Encoding
 {
-    return [newSHA1(self.bytes, self.length) mp_base64EncodedString];
+    return [newSHA1(self.bytes, self.length) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
 }
 
 @end
@@ -148,7 +147,7 @@ static NSData *newSHA1(const char *bytes, size_t length) {
 
 - (NSString *)stringBySHA1ThenBase64Encoding
 {
-    return [newSHA1(self.UTF8String, self.length) mp_base64EncodedString];
+    return [newSHA1(self.UTF8String, self.length) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
 }
 
 @end
@@ -353,11 +352,11 @@ static __strong NSData *CRLFCRLF;
 
     _currentFrameData = [[NSMutableData alloc] init];
 
-    _consumers = [[NSMutableArray alloc] init];
+    _consumers = [NSMutableArray array];
 
     _consumerPool = [[MPIOConsumerPool alloc] init];
 
-    _scheduledRunloops = [[NSMutableSet alloc] init];
+    _scheduledRunloops = [NSMutableSet set];
 
     [self _initializeStreams];
 
@@ -464,7 +463,7 @@ static __strong NSData *CRLFCRLF;
 
     }
 
-    if(![self _checkHandshake:_receivedHTTPHeaders]) {
+    if (![self _checkHandshake:_receivedHTTPHeaders]) {
         [self _failWithError:[NSError errorWithDomain:MPWebSocketErrorDomain code:2133 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Invalid Sec-WebSocket-Accept response"]}]];
         return;
     }
@@ -522,8 +521,8 @@ static __strong NSData *CRLFCRLF;
 
     NSMutableData *keyBytes = [[NSMutableData alloc] initWithLength:16];
     SecRandomCopyBytes(kSecRandomDefault, keyBytes.length, keyBytes.mutableBytes);
-    _secKey = [keyBytes mp_base64EncodedString];
-    assert([_secKey length] == 24);
+    _secKey = [keyBytes base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    assert(_secKey.length == 24);
 
     CFHTTPMessageSetHeaderFieldValue(request, CFSTR("Upgrade"), CFSTR("websocket"));
     CFHTTPMessageSetHeaderFieldValue(request, CFSTR("Connection"), CFSTR("Upgrade"));
@@ -570,7 +569,7 @@ static __strong NSData *CRLFCRLF;
 
 
     if (_secure) {
-        NSMutableDictionary *SSLOptions = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *SSLOptions = [NSMutableDictionary dictionary];
 
         [_outputStream setProperty:(__bridge id)kCFStreamSocketSecurityLevelNegotiatedSSL forKey:(__bridge id)kCFStreamPropertySocketSecurityLevel];
 
@@ -663,7 +662,6 @@ static __strong NSData *CRLFCRLF;
             }
         }
 
-
         [self _sendFrameWithOpcode:MPOpCodeConnectionClose data:payload];
     });
 }
@@ -705,7 +703,7 @@ static __strong NSData *CRLFCRLF;
     [self assertOnWorkQueue];
 
     if (_closeWhenFinishedWriting) {
-            return;
+        return;
     }
     [_outputBuffer appendData:data];
     [self _pumpWriting];
@@ -1048,7 +1046,7 @@ static const uint8_t MPPayloadLenMask   = 0x7F;
 - (void)_readFrameNew;
 {
     dispatch_async(_workQueue, ^{
-        [self->_currentFrameData setLength:0];
+        self->_currentFrameData.length = 0;
 
         self->_currentFrameOpcode = 0;
         self->_currentFrameCount = 0;
@@ -1292,7 +1290,6 @@ static const char CRLFCRLFBytes[] = {'\r', '\n', '\r', '\n'};
                         _currentStringScanPosition += (uint32_t)valid_utf8_size;
                     }
                 }
-
             }
 
             consumer.bytesNeeded -= foundSize;
@@ -1347,7 +1344,7 @@ static const size_t MPFrameHeaderOverhead = 32;
         [self closeWithCode:MPStatusCodeMessageTooBig reason:@"Message too big"];
         return;
     }
-    uint8_t *frame_buffer = (uint8_t *)[frame mutableBytes];
+    uint8_t *frame_buffer = (uint8_t *)frame.mutableBytes;
 
     // set fin
     frame_buffer[0] = MPFinMask | opcode;
@@ -1402,7 +1399,7 @@ static const size_t MPFrameHeaderOverhead = 32;
         }
     }
 
-    assert(frame_buffer_size <= [frame length]);
+    assert(frame_buffer_size <= frame.length);
     frame.length = frame_buffer_size;
 
     [self _writeData:frame];
@@ -1466,7 +1463,6 @@ static const size_t MPFrameHeaderOverhead = 32;
                 self->_readBufferOffset = 0;
                 [self->_readBuffer setLength:0];
                 break;
-
             }
 
             case NSStreamEventEndEncountered: {
@@ -1564,7 +1560,7 @@ static const size_t MPFrameHeaderOverhead = 32;
     self = [super init];
     if (self) {
         _poolSize = poolSize;
-        _bufferedConsumers = [[NSMutableArray alloc] initWithCapacity:poolSize];
+        _bufferedConsumers = [NSMutableArray arrayWithCapacity:poolSize];
     }
     return self;
 }
@@ -1578,7 +1574,7 @@ static const size_t MPFrameHeaderOverhead = 32;
 {
     MPIOConsumer *consumer = nil;
     if (_bufferedConsumers.count) {
-        consumer = [_bufferedConsumers lastObject];
+        consumer = _bufferedConsumers.lastObject;
         [_bufferedConsumers removeLastObject];
     } else {
         consumer = [[MPIOConsumer alloc] init];
@@ -1626,7 +1622,7 @@ static const size_t MPFrameHeaderOverhead = 32;
 
 - (NSString *)mp_origin;
 {
-    NSString *scheme = [self.scheme lowercaseString];
+    NSString *scheme = self.scheme.lowercaseString;
 
     if ([scheme isEqualToString:@"wss"]) {
         scheme = @"https";
@@ -1646,15 +1642,15 @@ static const size_t MPFrameHeaderOverhead = 32;
 #ifdef HAS_ICU
 
 static inline int32_t validate_dispatch_data_partial_string(NSData *data) {
-    const void * contents = [data bytes];
-    long size = (long)[data length];
+    const void * contents = data.bytes;
+    long size = (long)data.length;
 
     const uint8_t *str = (const uint8_t *)contents;
 
     UChar32 codepoint = 1;
     int32_t offset = 0;
     int32_t lastOffset = 0;
-    while(offset < size && codepoint > 0)  {
+    while (offset < size && codepoint > 0)  {
         lastOffset = offset;
         U8_NEXT(str, offset, size, codepoint);
     }
@@ -1680,7 +1676,7 @@ static inline int32_t validate_dispatch_data_partial_string(NSData *data) {
         }
     }
 
-    if (size != -1 && ![[NSString alloc] initWithBytesNoCopy:(char *)[data bytes] length:(NSUInteger)size encoding:NSUTF8StringEncoding freeWhenDone:NO]) {
+    if (size != -1 && ![[NSString alloc] initWithBytesNoCopy:(char *)data.bytes length:(NSUInteger)size encoding:NSUTF8StringEncoding freeWhenDone:NO]) {
         size = -1;
     }
 
