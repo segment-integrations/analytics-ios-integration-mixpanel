@@ -1,6 +1,15 @@
 Change Log
 ==========
 
+Version 1.1.0 *(12th July, 2016)*
+-------------------------------------------
+*(Supports analytics-ios 3.0+ and Mixpanel 3.0+)*
+    
+    * Supports any version greater than 3.0 and less than 4.0.
+    * Fixes small bug in the Mixpanel library in version 2.9.9, for the in-app notifications, that was fixed in the version 3.0
+    * Drops iOS 7 support
+
+
 Version 1.0.5 *(7th July, 2016)*
 -------------------------------------------
 *(Supports analytics-ios 3.0)*
