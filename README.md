@@ -18,7 +18,9 @@ pod "Segment-Mixpanel"
 
 Import the Mixpanel integration in your AppDelegate:
 
-    `#import <Segment-Mixpanel/SEGMixpanelIntegrationFactory.h> `
+```
+#import <Segment-Mixpanel/SEGMixpanelIntegrationFactory.h>
+```
 
 And add the following line:
 
@@ -26,7 +28,15 @@ And add the following line:
 NSString *const SEGMENT_WRITE_KEY = @" ... ";
 SEGAnalyticsConfiguration *config = [SEGAnalyticsConfiguration configurationWithWriteKey:SEGMENT_WRITE_KEY];
 
-**[config use:[SEGMixpanelIntegrationFactory instance]];**
+```
+**
+```
+[config use:[SEGMixpanelIntegrationFactory instance]];
+
+```
+**
+
+```
 
 [SEGAnalytics setupWithConfiguration:config];
 
