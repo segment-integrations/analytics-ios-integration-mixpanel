@@ -29,12 +29,8 @@ NSString *const SEGMENT_WRITE_KEY = @" ... ";
 SEGAnalyticsConfiguration *config = [SEGAnalyticsConfiguration configurationWithWriteKey:SEGMENT_WRITE_KEY];
 
 ```
-**
-```
-[config use:[SEGMixpanelIntegrationFactory instance]];
+**`[config use:[SEGMixpanelIntegrationFactory instance]];`**
 
-```
-**
 
 ```
 
