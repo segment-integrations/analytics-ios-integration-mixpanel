@@ -22,7 +22,7 @@ After adding the dependency, you must register the integration with our SDK.  To
 #import <Segment-Mixpanel/SEGMixpanelIntegrationFactory.h>
 ```
 
-And add the following line:
+And add the following lines:
 
 ```
 NSString *const SEGMENT_WRITE_KEY = @" ... ";
