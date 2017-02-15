@@ -20,6 +20,14 @@
     return self;
 }
 
+- (instancetype)initWithLaunchOptions: (NSDictionary *)launchOptions
+{
+    if (self = [super init]) {
+        self.launchOptions = launchOptions;
+    }
+    return self;
+}
+
 
 + (instancetype)instanceWithLaunchOptions: (NSString *)token launchOptions:(NSDictionary *)launchOptions
 {
@@ -33,9 +41,10 @@
     
 }
 
-- (id<SEGIntegration>)createWithSettings:(NSDictionary *)settings forAnalytics:(SEGAnalytics *)analytics
+
+- (id<SEGIntegration>)createWithSettings:(NSDictionary *)settings forAnalytics:(SEGAnalytics *)analytics 
 {
-    return [[SEGMixpanelIntegration alloc] initWithSettings:settings];
+    return [[SEGMixpanelIntegration alloc] initWithSettings:settings launchOptions:_launchOptions];
 }
 
 
