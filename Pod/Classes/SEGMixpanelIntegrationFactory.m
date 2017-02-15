@@ -34,8 +34,7 @@
     static dispatch_once_t once;
     static SEGMixpanelIntegrationFactory *sharedInstance;
     dispatch_once(&once, ^{
-        [Mixpanel sharedInstanceWithToken:token launchOptions:launchOptions];
-        sharedInstance = [[self alloc] init];
+        sharedInstance = [[self alloc] initWithLaunchOptions:launchOptions];
     });
     return sharedInstance;
     
@@ -44,7 +43,7 @@
 
 - (id<SEGIntegration>)createWithSettings:(NSDictionary *)settings forAnalytics:(SEGAnalytics *)analytics 
 {
-    return [[SEGMixpanelIntegration alloc] initWithSettings:settings launchOptions:_launchOptions];
+    return [[SEGMixpanelIntegration alloc] initWithSettings:settings];
 }
 
 

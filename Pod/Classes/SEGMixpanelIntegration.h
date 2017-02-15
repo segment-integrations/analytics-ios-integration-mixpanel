@@ -12,6 +12,6 @@
 
 - (instancetype)initWithSettings:(NSDictionary *)settings andMixpanel:(Mixpanel *)mixpanel;
 
--(instancetype)initWithSettings:(NSDictionary *)settings launchOptions:(NSDictionary *)launchOptions;
+- (instancetype)initWithSettings:(NSDictionary *)settings launchOptions:(NSDictionary *)launchOptions;
 
 @end
