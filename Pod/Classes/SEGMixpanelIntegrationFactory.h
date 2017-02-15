@@ -3,7 +3,7 @@
 
 @interface SEGMixpanelIntegrationFactory : NSObject <SEGIntegrationFactory>
 + (instancetype)instance;
-+ (instancetype)instanceWithLaunchOptions: (NSString *)token launchOptions:(NSDictionary *)launchOptions;
++ (instancetype)createWithLaunchOptions: (NSString *)token launchOptions:(NSDictionary *)launchOptions;
 @property NSDictionary *launchOptions;
 
 @end

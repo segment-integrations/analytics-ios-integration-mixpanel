@@ -29,17 +29,10 @@
 }
 
 
-+ (instancetype)instanceWithLaunchOptions: (NSString *)token launchOptions:(NSDictionary *)launchOptions
++ (instancetype)createWithLaunchOptions: (NSString *)token launchOptions:(NSDictionary *)launchOptions
 {
-    static dispatch_once_t once;
-    static SEGMixpanelIntegrationFactory *sharedInstance;
-    dispatch_once(&once, ^{
-        sharedInstance = [[self alloc] initWithLaunchOptions:launchOptions];
-    });
-    return sharedInstance;
-    
+    return [[self alloc] initWithLaunchOptions:launchOptions];;
 }
-
 
 - (id<SEGIntegration>)createWithSettings:(NSDictionary *)settings forAnalytics:(SEGAnalytics *)analytics 
 {
