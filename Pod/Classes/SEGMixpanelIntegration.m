@@ -4,15 +4,6 @@
 
 @implementation SEGMixpanelIntegration
 
-- (instancetype)initWithSettings:(NSDictionary *)settings
-{
-    if (self = [super init]) {
-        self.settings = settings;
-        NSString *token = [self.settings objectForKey:@"token"];
-        self.mixpanel = [Mixpanel sharedInstanceWithToken:token];
-    }
-    return self;
-}
 
 - (instancetype)initWithSettings:(NSDictionary *)settings andMixpanel:(Mixpanel *)mixpanel
 {
@@ -23,13 +14,12 @@
     return self;
 }
 
--(instancetype)initWithSettings:(NSDictionary *)settings launchOptions:(NSDictionary *)launchOptions
+-(instancetype)initWithSettings:(NSDictionary *)settings andLaunchOptions:(NSDictionary *)launchOptions
 {
 
     if (self= [super init]) {
         self.settings = settings;
         NSString *token = [self.settings objectForKey:@"token"];
-        // Push open tracking requires you to initialize Mixpanel with launch options
         self.mixpanel = [Mixpanel sharedInstanceWithToken: token launchOptions:launchOptions];
     }
     return self;

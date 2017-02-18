@@ -9,18 +9,12 @@
     static dispatch_once_t once;
     static SEGMixpanelIntegrationFactory *sharedInstance;
     dispatch_once(&once, ^{
-        sharedInstance = [[self alloc] init];
+        sharedInstance = [[self alloc] initWithLaunchOptions:nil];
     });
     return sharedInstance;
 }
 
-- (instancetype)init
-{
-    self = [super init];
-    return self;
-}
-
-- (instancetype)initWithLaunchOptions: (NSDictionary *)launchOptions
+- (instancetype)initWithLaunchOptions:(NSDictionary *)launchOptions
 {
     if (self = [super init]) {
         self.launchOptions = launchOptions;
@@ -29,14 +23,14 @@
 }
 
 
-+ (instancetype)createWithLaunchOptions: (NSString *)token launchOptions:(NSDictionary *)launchOptions
++ (instancetype)createWithLaunchOptions:(NSString *)token launchOptions:(NSDictionary *)launchOptions
 {
-    return [[self alloc] initWithLaunchOptions:launchOptions];;
+    return [[self alloc] initWithLaunchOptions:launchOptions];
 }
 
 - (id<SEGIntegration>)createWithSettings:(NSDictionary *)settings forAnalytics:(SEGAnalytics *)analytics 
 {
-    return [[SEGMixpanelIntegration alloc] initWithSettings:settings];
+    return [[SEGMixpanelIntegration alloc] initWithSettings:settings andLaunchOptions:self.launchOptions];
 }
 
 
