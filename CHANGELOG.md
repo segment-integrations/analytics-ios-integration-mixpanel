@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+Version 1.2.0 *(20th February, 2017)*
+-------------------------------------------
+*(Supports analytics-ios 3.0+ and Mixpanel 3.0+)*
+    
+    * Adds instance with launch-options for Mixpanel Push Notification Tracking.
+    * Updates Example/Podfile to [Cocoapods 1.0 spec.](http://blog.cocoapods.org/CocoaPods-1.0-Migration-Guide/) 
+
 Version 1.1.0 *(12th July, 2016)*
 -------------------------------------------
 *(Supports analytics-ios 3.0+ and Mixpanel 3.0+)*
