@@ -9,21 +9,30 @@
     static dispatch_once_t once;
     static SEGMixpanelIntegrationFactory *sharedInstance;
     dispatch_once(&once, ^{
-        sharedInstance = [[self alloc] init];
+        sharedInstance = [[self alloc] initWithLaunchOptions:nil];
     });
     return sharedInstance;
 }
 
-- (instancetype)init
+- (instancetype)initWithLaunchOptions:(NSDictionary *)launchOptions
 {
-    self = [super init];
+    if (self = [super init]) {
+        self.launchOptions = launchOptions;
+    }
     return self;
 }
 
-- (id<SEGIntegration>)createWithSettings:(NSDictionary *)settings forAnalytics:(SEGAnalytics *)analytics
+
++ (instancetype)createWithLaunchOptions:(NSString *)token launchOptions:(NSDictionary *)launchOptions
 {
-    return [[SEGMixpanelIntegration alloc] initWithSettings:settings];
+    return [[self alloc] initWithLaunchOptions:launchOptions];
 }
+
+- (id<SEGIntegration>)createWithSettings:(NSDictionary *)settings forAnalytics:(SEGAnalytics *)analytics 
+{
+    return [[SEGMixpanelIntegration alloc] initWithSettings:settings andLaunchOptions:self.launchOptions];
+}
+
 
 - (NSString *)key
 {

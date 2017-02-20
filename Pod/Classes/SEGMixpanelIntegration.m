@@ -4,21 +4,23 @@
 
 @implementation SEGMixpanelIntegration
 
-- (instancetype)initWithSettings:(NSDictionary *)settings
-{
-    if (self = [super init]) {
-        self.settings = settings;
-        NSString *token = [self.settings objectForKey:@"token"];
-        self.mixpanel = [Mixpanel sharedInstanceWithToken:token];
-    }
-    return self;
-}
 
 - (instancetype)initWithSettings:(NSDictionary *)settings andMixpanel:(Mixpanel *)mixpanel
 {
     if (self = [super init]) {
         self.settings = settings;
         self.mixpanel = mixpanel;
+    }
+    return self;
+}
+
+-(instancetype)initWithSettings:(NSDictionary *)settings andLaunchOptions:(NSDictionary *)launchOptions
+{
+
+    if (self= [super init]) {
+        self.settings = settings;
+        NSString *token = [self.settings objectForKey:@"token"];
+        self.mixpanel = [Mixpanel sharedInstanceWithToken: token launchOptions:launchOptions];
     }
     return self;
 }

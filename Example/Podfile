@@ -3,11 +3,11 @@ use_frameworks!
 
 platform :ios, '8.0'
 
-target 'Segment-Mixpanel_Example', :exclusive => true do
+target 'Segment-Mixpanel_Example' do
   pod "Segment-Mixpanel", :path => "../"
 end
 
-target 'Segment-Mixpanel_Tests', :exclusive => true do
+target 'Segment-Mixpanel_Tests' do
   pod "Segment-Mixpanel", :path => "../"
 
   pod 'OCMockito'
