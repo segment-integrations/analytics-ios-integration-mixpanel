@@ -13,6 +13,7 @@ To install the Segment-Mixpanel integration, simply add this line to your [Cocoa
 ```ruby
 pod "Segment-Mixpanel"
 ```
+We recommended you [specify or pin](](https://guides.cocoapods.org/syntax/podfile.html#pod)), at least, the major version of the pod, found in the [CHANGELOG.md](https://github.com/segment-integrations/analytics-ios-integration-mixpanel/blob/master/CHANGELOG.md).
 
 ## Usage
 
