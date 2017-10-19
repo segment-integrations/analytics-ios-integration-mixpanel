@@ -8,7 +8,8 @@ before_install:
 script:
 # Fails with "Unable to find Analytics/TestFlight".
 # - pod lib lint --allow-warnings
-  - make xctest
+  - make install
+  - make test
 
 notifications:
   email: false
