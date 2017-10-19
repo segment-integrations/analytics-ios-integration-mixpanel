@@ -1,1 +1,0 @@
-../../../Mixpanel/Mixpanel/Mixpanel+AutomaticEvents.h

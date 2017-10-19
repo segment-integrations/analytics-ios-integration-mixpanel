@@ -1,6 +1,0 @@
-framework module Segment_Mixpanel {
-  umbrella header "Segment-Mixpanel-umbrella.h"
-
-  export *
-  module * { export * }
-}
