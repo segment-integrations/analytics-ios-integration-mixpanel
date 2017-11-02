@@ -1,5 +1,6 @@
 # Analytics
 
+[![CircleCI](https://circleci.com/gh/segment-integrations/analytics-ios-integration-mixpanel.svg?style=svg)](https://circleci.com/gh/segment-integrations/analytics-ios-integration-mixpanel)
 [![Version](https://img.shields.io/cocoapods/v/Segment-Mixpanel.svg?style=flat)](http://cocoapods.org/pods/Segment-Mixpanel)
 [![License](https://img.shields.io/cocoapods/l/Segment-Mixpanel.svg?style=flat)](http://cocoapods.org/pods/Segment-Mixpanel)
 
