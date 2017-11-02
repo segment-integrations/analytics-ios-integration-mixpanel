@@ -1,6 +1,5 @@
 # Analytics
 
-[![CI Status](http://img.shields.io/travis/segment-integrations/analytics-ios-integration-mixpanel.svg?style=flat)](https://travis-ci.org/segment-integrations/analytics-ios-integration-mixpanel)
 [![Version](https://img.shields.io/cocoapods/v/Segment-Mixpanel.svg?style=flat)](http://cocoapods.org/pods/Segment-Mixpanel)
 [![License](https://img.shields.io/cocoapods/l/Segment-Mixpanel.svg?style=flat)](http://cocoapods.org/pods/Segment-Mixpanel)
 
