@@ -6,8 +6,10 @@ XC_ARGS := -scheme $(PROJECT)-Example -workspace Example/$(PROJECT).xcworkspace 
 install: Example/Podfile $(PROJECT).podspec
 	pod repo update
 	pod install --project-directory=Example
+
 lint:
-	pod lib lint
+	pod lib lint --allow-warnings
+
 clean:
 	set -o pipefail && xcodebuild $(XC_ARGS) clean | xcpretty
 
