@@ -253,7 +253,11 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Prateek Srivastava";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = ENLA8E7Z4L;
+					};
 					6003F5AD195388D20070C39A = {
+						DevelopmentTeam = ENLA8E7Z4L;
 						TestTargetID = 6003F589195388D20070C39A;
 					};
 				};
@@ -548,6 +552,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = ENLA8E7Z4L;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Segment-Mixpanel/Segment-Mixpanel-Prefix.pch";
 				INFOPLIST_FILE = "Segment-Mixpanel/Segment-Mixpanel-Info.plist";
@@ -564,6 +569,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = ENLA8E7Z4L;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Segment-Mixpanel/Segment-Mixpanel-Prefix.pch";
 				INFOPLIST_FILE = "Segment-Mixpanel/Segment-Mixpanel-Info.plist";
@@ -579,6 +585,7 @@
 			baseConfigurationReference = 2686DAE53EB1FC85DD97261B /* Pods-Segment-Mixpanel_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = ENLA8E7Z4L;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
@@ -598,6 +605,7 @@
 			baseConfigurationReference = 82DB54EF8811654DC7D66E24 /* Pods-Segment-Mixpanel_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = ENLA8E7Z4L;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
