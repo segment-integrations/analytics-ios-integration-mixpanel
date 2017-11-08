@@ -2,11 +2,11 @@
 
 #ifdef __OBJC__
 
-  @import Specta;
-  @import Expecta;
-  @import OCMockito;
-  @import Analytics;
-  @import Mixpanel;
-  @import Segment_Mixpanel;
+#import <Specta/Specta.h>
+#import <Expecta/Expecta.h>
+#import <OCMockito/OCMockito.h>
+#import <Analytics/SEGAnalytics.h>
+#import <Mixpanel/Mixpanel.h>
+#import <Segment-Mixpanel/SEGMixpanelIntegration.h>
 
 #endif
