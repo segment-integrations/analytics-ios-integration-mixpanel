@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18F86506E432B80B5CB8B19B /* Pods_Segment_Mixpanel_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D91A5687E8D2325EFF0ECA5 /* Pods_Segment_Mixpanel_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -21,9 +20,10 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		646BF5E5B0A91FAEC86EAB0B /* libPods-Segment-Mixpanel_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32068BB1118AA2547BF291C6 /* libPods-Segment-Mixpanel_Tests.a */; };
 		6E93A9E71CC5764000E1C88C /* SEGPayloadBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E93A9E61CC5764000E1C88C /* SEGPayloadBuilder.m */; };
 		6E93A9E81CC5764000E1C88C /* SEGPayloadBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E93A9E61CC5764000E1C88C /* SEGPayloadBuilder.m */; };
-		749A3C8BFECBBCC3759BBA06 /* Pods_Segment_Mixpanel_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A68F8975ED04A1F1DB3D6B4 /* Pods_Segment_Mixpanel_Tests.framework */; };
+		751E60F3212BE52C35301FF3 /* libPods-Segment-Mixpanel_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDE7689F5A0E13283504B30 /* libPods-Segment-Mixpanel_Example.a */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -40,9 +40,8 @@
 /* Begin PBXFileReference section */
 		213FDEBC1D8955A85AFA9883 /* Pods-Segment-Mixpanel_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Segment-Mixpanel_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Segment-Mixpanel_Example/Pods-Segment-Mixpanel_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		2686DAE53EB1FC85DD97261B /* Pods-Segment-Mixpanel_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Segment-Mixpanel_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Segment-Mixpanel_Tests/Pods-Segment-Mixpanel_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		2A68F8975ED04A1F1DB3D6B4 /* Pods_Segment_Mixpanel_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Segment_Mixpanel_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AF177CC51F0E4C8BFF06EC5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		4D91A5687E8D2325EFF0ECA5 /* Pods_Segment_Mixpanel_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Segment_Mixpanel_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		32068BB1118AA2547BF291C6 /* libPods-Segment-Mixpanel_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Segment-Mixpanel_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* Segment-Mixpanel_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Segment-Mixpanel_Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -67,6 +66,7 @@
 		82DB54EF8811654DC7D66E24 /* Pods-Segment-Mixpanel_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Segment-Mixpanel_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Segment-Mixpanel_Tests/Pods-Segment-Mixpanel_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		979EBA82988F5007F25EC453 /* Pods-Segment-Mixpanel_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Segment-Mixpanel_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Segment-Mixpanel_Example/Pods-Segment-Mixpanel_Example.release.xcconfig"; sourceTree = "<group>"; };
+		9BDE7689F5A0E13283504B30 /* libPods-Segment-Mixpanel_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Segment-Mixpanel_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10DD4E3EA59929200EB78C1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F3224DF750AB6BA1576A40BB /* Segment-Mixpanel.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = "Segment-Mixpanel.podspec"; path = "../Segment-Mixpanel.podspec"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,7 +79,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				18F86506E432B80B5CB8B19B /* Pods_Segment_Mixpanel_Example.framework in Frameworks */,
+				751E60F3212BE52C35301FF3 /* libPods-Segment-Mixpanel_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				749A3C8BFECBBCC3759BBA06 /* Pods_Segment_Mixpanel_Tests.framework in Frameworks */,
+				646BF5E5B0A91FAEC86EAB0B /* libPods-Segment-Mixpanel_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,8 +125,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				4D91A5687E8D2325EFF0ECA5 /* Pods_Segment_Mixpanel_Example.framework */,
-				2A68F8975ED04A1F1DB3D6B4 /* Pods_Segment_Mixpanel_Tests.framework */,
+				9BDE7689F5A0E13283504B30 /* libPods-Segment-Mixpanel_Example.a */,
+				32068BB1118AA2547BF291C6 /* libPods-Segment-Mixpanel_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -335,9 +335,28 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Segment-Mixpanel_Example/Pods-Segment-Mixpanel_Example-resources.sh",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowLeft.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowLeft@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowRight.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowRight@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCheckmark.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCheckmark@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton@3x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPDismissKeyboard.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPDismissKeyboard@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPLogo.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPLogo@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/placeholder-image.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~ipad.xib",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~iphonelandscape.xib",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~iphoneportrait.xib",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -368,9 +387,28 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Segment-Mixpanel_Tests/Pods-Segment-Mixpanel_Tests-resources.sh",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowLeft.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowLeft@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowRight.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowRight@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCheckmark.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCheckmark@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton@3x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPDismissKeyboard.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPDismissKeyboard@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPLogo.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPLogo@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/placeholder-image.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~ipad.xib",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~iphonelandscape.xib",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~iphoneportrait.xib",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -579,7 +617,6 @@
 			baseConfigurationReference = 2686DAE53EB1FC85DD97261B /* Pods-Segment-Mixpanel_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -598,7 +635,6 @@
 			baseConfigurationReference = 82DB54EF8811654DC7D66E24 /* Pods-Segment-Mixpanel_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";

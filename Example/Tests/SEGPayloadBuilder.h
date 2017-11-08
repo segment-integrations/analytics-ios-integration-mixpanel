@@ -7,7 +7,7 @@
 //
 
 @import Foundation;
-@import Analytics;
+#import <Analytics/SEGAnalytics.h>
 
 
 @interface SEGPayloadBuilder : NSObject
