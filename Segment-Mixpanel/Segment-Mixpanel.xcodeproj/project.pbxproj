@@ -1,0 +1,628 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		26105C5F82F73A5E53CF8723 /* libPods-Segment-Mixpanel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A98853D105F715C1FFDE1D7 /* libPods-Segment-Mixpanel.a */; };
+		AFBD54D1B421F159A49EE66C /* libPods-Segment-MixpanelTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDD3A7E8BBF984CD82302CD /* libPods-Segment-MixpanelTests.a */; };
+		EAFF40801FB3C35900E00533 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFF407F1FB3C35900E00533 /* AppDelegate.m */; };
+		EAFF40831FB3C35900E00533 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFF40821FB3C35900E00533 /* ViewController.m */; };
+		EAFF40861FB3C35900E00533 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAFF40841FB3C35900E00533 /* Main.storyboard */; };
+		EAFF40881FB3C35900E00533 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAFF40871FB3C35900E00533 /* Assets.xcassets */; };
+		EAFF408B1FB3C35900E00533 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAFF40891FB3C35900E00533 /* LaunchScreen.storyboard */; };
+		EAFF408E1FB3C35900E00533 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFF408D1FB3C35900E00533 /* main.m */; };
+		EAFF40981FB3C35900E00533 /* Segment_MixpanelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFF40971FB3C35900E00533 /* Segment_MixpanelTests.m */; };
+		EAFF40A41FB3C50E00E00533 /* SEGPayloadBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFF40A31FB3C50E00E00533 /* SEGPayloadBuilder.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EAFF40941FB3C35900E00533 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAFF40731FB3C35900E00533 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAFF407A1FB3C35900E00533;
+			remoteInfo = "Segment-Mixpanel";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0934DFDACBD15198F61204A4 /* Pods-Segment-Mixpanel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Segment-Mixpanel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Segment-Mixpanel/Pods-Segment-Mixpanel.debug.xcconfig"; sourceTree = "<group>"; };
+		1A98853D105F715C1FFDE1D7 /* libPods-Segment-Mixpanel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Segment-Mixpanel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FDD3A7E8BBF984CD82302CD /* libPods-Segment-MixpanelTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Segment-MixpanelTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E17E1BDCC51CC85816525BB /* Pods-Segment-Mixpanel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Segment-Mixpanel.release.xcconfig"; path = "Pods/Target Support Files/Pods-Segment-Mixpanel/Pods-Segment-Mixpanel.release.xcconfig"; sourceTree = "<group>"; };
+		6D016097FE017801205036B3 /* Pods-Segment-MixpanelTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Segment-MixpanelTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Segment-MixpanelTests/Pods-Segment-MixpanelTests.release.xcconfig"; sourceTree = "<group>"; };
+		9D1E5562EB5A11F274CAEF76 /* Pods-Segment-MixpanelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Segment-MixpanelTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Segment-MixpanelTests/Pods-Segment-MixpanelTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EAFF407B1FB3C35900E00533 /* Segment-Mixpanel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Segment-Mixpanel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAFF407E1FB3C35900E00533 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EAFF407F1FB3C35900E00533 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EAFF40811FB3C35900E00533 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EAFF40821FB3C35900E00533 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EAFF40851FB3C35900E00533 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EAFF40871FB3C35900E00533 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EAFF408A1FB3C35900E00533 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EAFF408C1FB3C35900E00533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAFF408D1FB3C35900E00533 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EAFF40931FB3C35900E00533 /* Segment-MixpanelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Segment-MixpanelTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAFF40971FB3C35900E00533 /* Segment_MixpanelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Segment_MixpanelTests.m; sourceTree = "<group>"; };
+		EAFF40991FB3C35900E00533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAFF40A21FB3C50E00E00533 /* SEGPayloadBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEGPayloadBuilder.h; sourceTree = "<group>"; };
+		EAFF40A31FB3C50E00E00533 /* SEGPayloadBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEGPayloadBuilder.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EAFF40781FB3C35900E00533 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26105C5F82F73A5E53CF8723 /* libPods-Segment-Mixpanel.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAFF40901FB3C35900E00533 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFBD54D1B421F159A49EE66C /* libPods-Segment-MixpanelTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3BFFC0E682151C518C130C42 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0934DFDACBD15198F61204A4 /* Pods-Segment-Mixpanel.debug.xcconfig */,
+				5E17E1BDCC51CC85816525BB /* Pods-Segment-Mixpanel.release.xcconfig */,
+				9D1E5562EB5A11F274CAEF76 /* Pods-Segment-MixpanelTests.debug.xcconfig */,
+				6D016097FE017801205036B3 /* Pods-Segment-MixpanelTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AB3AF4E8C3EDA1B4C237EA63 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A98853D105F715C1FFDE1D7 /* libPods-Segment-Mixpanel.a */,
+				2FDD3A7E8BBF984CD82302CD /* libPods-Segment-MixpanelTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EAFF40721FB3C35900E00533 = {
+			isa = PBXGroup;
+			children = (
+				EAFF407D1FB3C35900E00533 /* Segment-Mixpanel */,
+				EAFF40961FB3C35900E00533 /* Segment-MixpanelTests */,
+				EAFF407C1FB3C35900E00533 /* Products */,
+				3BFFC0E682151C518C130C42 /* Pods */,
+				AB3AF4E8C3EDA1B4C237EA63 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EAFF407C1FB3C35900E00533 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAFF407B1FB3C35900E00533 /* Segment-Mixpanel.app */,
+				EAFF40931FB3C35900E00533 /* Segment-MixpanelTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EAFF407D1FB3C35900E00533 /* Segment-Mixpanel */ = {
+			isa = PBXGroup;
+			children = (
+				EAFF407E1FB3C35900E00533 /* AppDelegate.h */,
+				EAFF407F1FB3C35900E00533 /* AppDelegate.m */,
+				EAFF40811FB3C35900E00533 /* ViewController.h */,
+				EAFF40821FB3C35900E00533 /* ViewController.m */,
+				EAFF40841FB3C35900E00533 /* Main.storyboard */,
+				EAFF40871FB3C35900E00533 /* Assets.xcassets */,
+				EAFF40891FB3C35900E00533 /* LaunchScreen.storyboard */,
+				EAFF408C1FB3C35900E00533 /* Info.plist */,
+				EAFF408D1FB3C35900E00533 /* main.m */,
+			);
+			path = "Segment-Mixpanel";
+			sourceTree = "<group>";
+		};
+		EAFF40961FB3C35900E00533 /* Segment-MixpanelTests */ = {
+			isa = PBXGroup;
+			children = (
+				EAFF40971FB3C35900E00533 /* Segment_MixpanelTests.m */,
+				EAFF40991FB3C35900E00533 /* Info.plist */,
+				EAFF40A21FB3C50E00E00533 /* SEGPayloadBuilder.h */,
+				EAFF40A31FB3C50E00E00533 /* SEGPayloadBuilder.m */,
+			);
+			path = "Segment-MixpanelTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EAFF407A1FB3C35900E00533 /* Segment-Mixpanel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAFF409C1FB3C35900E00533 /* Build configuration list for PBXNativeTarget "Segment-Mixpanel" */;
+			buildPhases = (
+				6F591A6B80AA0B9CA6AABB29 /* [CP] Check Pods Manifest.lock */,
+				EAFF40771FB3C35900E00533 /* Sources */,
+				EAFF40781FB3C35900E00533 /* Frameworks */,
+				EAFF40791FB3C35900E00533 /* Resources */,
+				A25696058F8C6C8502186CF5 /* [CP] Embed Pods Frameworks */,
+				ED324D3A401A2F4E4B297840 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Segment-Mixpanel";
+			productName = "Segment-Mixpanel";
+			productReference = EAFF407B1FB3C35900E00533 /* Segment-Mixpanel.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EAFF40921FB3C35900E00533 /* Segment-MixpanelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAFF409F1FB3C35900E00533 /* Build configuration list for PBXNativeTarget "Segment-MixpanelTests" */;
+			buildPhases = (
+				8132B745C9533466DDF090ED /* [CP] Check Pods Manifest.lock */,
+				EAFF408F1FB3C35900E00533 /* Sources */,
+				EAFF40901FB3C35900E00533 /* Frameworks */,
+				EAFF40911FB3C35900E00533 /* Resources */,
+				A8694CAE0464EABCC1AAF4E4 /* [CP] Embed Pods Frameworks */,
+				2E2B45C3776BB3B4EFD3D313 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EAFF40951FB3C35900E00533 /* PBXTargetDependency */,
+			);
+			name = "Segment-MixpanelTests";
+			productName = "Segment-MixpanelTests";
+			productReference = EAFF40931FB3C35900E00533 /* Segment-MixpanelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EAFF40731FB3C35900E00533 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = Segment;
+				TargetAttributes = {
+					EAFF407A1FB3C35900E00533 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+					};
+					EAFF40921FB3C35900E00533 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EAFF407A1FB3C35900E00533;
+					};
+				};
+			};
+			buildConfigurationList = EAFF40761FB3C35900E00533 /* Build configuration list for PBXProject "Segment-Mixpanel" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EAFF40721FB3C35900E00533;
+			productRefGroup = EAFF407C1FB3C35900E00533 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EAFF407A1FB3C35900E00533 /* Segment-Mixpanel */,
+				EAFF40921FB3C35900E00533 /* Segment-MixpanelTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EAFF40791FB3C35900E00533 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAFF408B1FB3C35900E00533 /* LaunchScreen.storyboard in Resources */,
+				EAFF40881FB3C35900E00533 /* Assets.xcassets in Resources */,
+				EAFF40861FB3C35900E00533 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAFF40911FB3C35900E00533 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2E2B45C3776BB3B4EFD3D313 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Segment-MixpanelTests/Pods-Segment-MixpanelTests-resources.sh",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowLeft.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowLeft@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowRight.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowRight@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCheckmark.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCheckmark@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton@3x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPDismissKeyboard.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPDismissKeyboard@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPLogo.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPLogo@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/placeholder-image.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~ipad.xib",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~iphonelandscape.xib",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~iphoneportrait.xib",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Segment-MixpanelTests/Pods-Segment-MixpanelTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F591A6B80AA0B9CA6AABB29 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Segment-Mixpanel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8132B745C9533466DDF090ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Segment-MixpanelTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A25696058F8C6C8502186CF5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Segment-Mixpanel/Pods-Segment-Mixpanel-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8694CAE0464EABCC1AAF4E4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Segment-MixpanelTests/Pods-Segment-MixpanelTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED324D3A401A2F4E4B297840 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Segment-Mixpanel/Pods-Segment-Mixpanel-resources.sh",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowLeft.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowLeft@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowRight.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowRight@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCheckmark.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCheckmark@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton@3x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPDismissKeyboard.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPDismissKeyboard@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPLogo.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPLogo@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/placeholder-image.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~ipad.xib",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~iphonelandscape.xib",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~iphoneportrait.xib",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Segment-Mixpanel/Pods-Segment-Mixpanel-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EAFF40771FB3C35900E00533 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAFF40831FB3C35900E00533 /* ViewController.m in Sources */,
+				EAFF408E1FB3C35900E00533 /* main.m in Sources */,
+				EAFF40801FB3C35900E00533 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAFF408F1FB3C35900E00533 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAFF40A41FB3C50E00E00533 /* SEGPayloadBuilder.m in Sources */,
+				EAFF40981FB3C35900E00533 /* Segment_MixpanelTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EAFF40951FB3C35900E00533 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EAFF407A1FB3C35900E00533 /* Segment-Mixpanel */;
+			targetProxy = EAFF40941FB3C35900E00533 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EAFF40841FB3C35900E00533 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAFF40851FB3C35900E00533 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EAFF40891FB3C35900E00533 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAFF408A1FB3C35900E00533 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EAFF409A1FB3C35900E00533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EAFF409B1FB3C35900E00533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EAFF409D1FB3C35900E00533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0934DFDACBD15198F61204A4 /* Pods-Segment-Mixpanel.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Segment-Mixpanel/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.segment.Segment-Mixpanel";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EAFF409E1FB3C35900E00533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E17E1BDCC51CC85816525BB /* Pods-Segment-Mixpanel.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Segment-Mixpanel/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.segment.Segment-Mixpanel";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EAFF40A01FB3C35900E00533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D1E5562EB5A11F274CAEF76 /* Pods-Segment-MixpanelTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Segment-MixpanelTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.segment.Segment-MixpanelTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Segment-Mixpanel.app/Segment-Mixpanel";
+			};
+			name = Debug;
+		};
+		EAFF40A11FB3C35900E00533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D016097FE017801205036B3 /* Pods-Segment-MixpanelTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Segment-MixpanelTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.segment.Segment-MixpanelTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Segment-Mixpanel.app/Segment-Mixpanel";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EAFF40761FB3C35900E00533 /* Build configuration list for PBXProject "Segment-Mixpanel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAFF409A1FB3C35900E00533 /* Debug */,
+				EAFF409B1FB3C35900E00533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAFF409C1FB3C35900E00533 /* Build configuration list for PBXNativeTarget "Segment-Mixpanel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAFF409D1FB3C35900E00533 /* Debug */,
+				EAFF409E1FB3C35900E00533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAFF409F1FB3C35900E00533 /* Build configuration list for PBXNativeTarget "Segment-MixpanelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAFF40A01FB3C35900E00533 /* Debug */,
+				EAFF40A11FB3C35900E00533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EAFF40731FB3C35900E00533 /* Project object */;
+}
