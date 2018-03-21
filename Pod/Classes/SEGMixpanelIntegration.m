@@ -225,7 +225,7 @@
     return NO;
 }
 
-// An internal utility method that checks the settings to see if this event should be incremented in Mixpanel.
+// An internal utility method that checks if properties need to be incremented and performs the increment.
 - (void)incrementProperties:(NSDictionary *)properties
 {
     NSArray *propIncrements = [self.settings objectForKey:@"propIncrements"];
@@ -234,7 +234,7 @@
             if ([property caseInsensitiveCompare:propIncrement] == NSOrderedSame) {
                 [[self.mixpanel people] increment:property by:[properties objectForKey:property]];
                 
-                SEGLog(@"[[[Mixpanel sharedInstance] people] increment:%@ by:1]", property);
+                SEGLog(@"[[[Mixpanel sharedInstance] people] increment:%@ by:%@]", property, [properties objectForKey:property]);
             }
         }
     }
