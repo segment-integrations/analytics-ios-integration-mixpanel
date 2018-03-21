@@ -172,6 +172,9 @@
     if (![self peopleEnabled]) {
         return;
     }
+    
+    // Handle property increments
+    [self incrementProperties:properties];    
 
     // Extract the revenue from the properties passed in to us.
     NSNumber *revenue = [SEGMixpanelIntegration extractRevenue:properties withKey:@"revenue"];
@@ -213,13 +216,28 @@
 // An internal utility method that checks the settings to see if this event should be incremented in Mixpanel.
 - (BOOL)eventShouldIncrement:(NSString *)event
 {
-    NSArray *increments = [self.settings objectForKey:@"increments"];
+    NSArray *increments = [self.settings objectForKey:@"eventIncrements"];
     for (NSString *increment in increments) {
         if ([event caseInsensitiveCompare:increment] == NSOrderedSame) {
             return YES;
         }
     }
     return NO;
+}
+
+// An internal utility method that checks the settings to see if this event should be incremented in Mixpanel.
+- (void)incrementProperties:(NSDictionary *)properties
+{
+    NSArray *propIncrements = [self.settings objectForKey:@"propIncrements"];
+    for (NSString *propIncrement in propIncrements) {
+        for (NSString *property in properties) {
+            if ([property caseInsensitiveCompare:propIncrement] == NSOrderedSame) {
+                [[self.mixpanel people] increment:property by:[properties objectForKey:property]];
+                
+                SEGLog(@"[[[Mixpanel sharedInstance] people] increment:%@ by:1]", property);
+            }
+        }
+    }
 }
 
 // Return true the project has the People feature enabled.
