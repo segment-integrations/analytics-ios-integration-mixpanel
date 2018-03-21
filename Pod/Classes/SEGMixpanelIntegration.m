@@ -173,7 +173,7 @@
         return;
     }
     
-    // Handle property increments
+    // Increment properties that are listed in the Mixpanel integration settings
     [self incrementProperties:properties];    
 
     // Extract the revenue from the properties passed in to us.
@@ -233,7 +233,6 @@
         for (NSString *property in properties) {
             if ([property caseInsensitiveCompare:propIncrement] == NSOrderedSame) {
                 [[self.mixpanel people] increment:property by:[properties objectForKey:property]];
-                
                 SEGLog(@"[[[Mixpanel sharedInstance] people] increment:%@ by:%@]", property, [properties objectForKey:property]);
             }
         }
