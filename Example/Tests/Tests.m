@@ -57,6 +57,19 @@ describe(@"Mixpanel Integration", ^{
         }];
         [verify(mixpanelPeople) trackCharge:@19.99];
     });
+    
+    it(@"track with property increments", ^{
+        [integration setSettings:@{
+            @"people" : @1,
+            @"propIncrements" : @[@"revenue"]
+        }];
+        [integration track:[SEGPayloadBuilder track:@"Purchased Item" withProperties:@{
+            @"revenue" : @19.99
+        }]];
+        [verify(mixpanel) track:@"Purchased Item" properties:@{
+            @"revenue" : @19.99
+        }];
+    });    
 
     it(@"screen", ^{
         [integration screen:[SEGPayloadBuilder screen:@"Home"]];
