@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.3.0 *(21st March, 2018)*
+-------------------------------------------
+*(Supports analytics-ios 3.0+ and Mixpanel 3.0+)*
+    
+    * [New](https://github.com/segment-integrations/analytics-ios-integration-mixpanel/pull/38): Supports automatic property increments for user profiles. 
+
 Version 1.2.0 *(20th February, 2017)*
 -------------------------------------------
 *(Supports analytics-ios 3.0+ and Mixpanel 3.0+)*
