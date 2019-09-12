@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		C979B8272326E318003E9671 /* Segment_Mixpanel.h in Headers */ = {isa = PBXBuildFile; fileRef = C979B8252326E318003E9671 /* Segment_Mixpanel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C979B8312326E361003E9671 /* SEGMixpanelIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = C979B82D2326E361003E9671 /* SEGMixpanelIntegration.m */; };
-		C979B8322326E361003E9671 /* SEGMixpanelIntegrationFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = C979B82E2326E361003E9671 /* SEGMixpanelIntegrationFactory.h */; };
-		C979B8332326E361003E9671 /* SEGMixpanelIntegration.h in Headers */ = {isa = PBXBuildFile; fileRef = C979B82F2326E361003E9671 /* SEGMixpanelIntegration.h */; };
+		C979B8322326E361003E9671 /* SEGMixpanelIntegrationFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = C979B82E2326E361003E9671 /* SEGMixpanelIntegrationFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C979B8332326E361003E9671 /* SEGMixpanelIntegration.h in Headers */ = {isa = PBXBuildFile; fileRef = C979B82F2326E361003E9671 /* SEGMixpanelIntegration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C979B8342326E361003E9671 /* SEGMixpanelIntegrationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C979B8302326E361003E9671 /* SEGMixpanelIntegrationFactory.m */; };
 		C979B8382326E44B003E9671 /* Analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C979B8362326E44B003E9671 /* Analytics.framework */; };
 		C979B8392326E44B003E9671 /* Mixpanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C979B8372326E44B003E9671 /* Mixpanel.framework */; };
