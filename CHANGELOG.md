@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.4.0 *(12th September, 2019)*
+-------------------------------------------
+*(Upgrade Segment-Mixpanel to 3.4.7)*
+    
+    * [New](https://github.com/segment-integrations/analytics-ios-integration-mixpanel/pull/42): Upgrade Segment-Mixpanel to 3.4.7.
+
 Version 1.3.0 *(21st March, 2018)*
 -------------------------------------------
 *(Supports analytics-ios 3.0+ and Mixpanel 3.0+)*
