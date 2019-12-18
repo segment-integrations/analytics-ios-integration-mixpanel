@@ -9,6 +9,7 @@
 // https://github.com/Specta/Specta
 
 #import "SEGPayloadBuilder.h"
+#import <MixpanelGroup.h>
 
 SpecBegin(InitialSpecs)
 
@@ -16,12 +17,15 @@ describe(@"Mixpanel Integration", ^{
     __block SEGMixpanelIntegration *integration;
     __block Mixpanel *mixpanel;
     __block MixpanelPeople *mixpanelPeople;
+    __block MixpanelGroup *mixpanelGroup;
 
     beforeEach(^{
         mixpanel = mock([Mixpanel class]);
         mixpanelPeople = mock([MixpanelPeople class]);
         [given([mixpanel people]) willReturn:mixpanelPeople];
-
+        
+        mixpanelGroup = mock([MixpanelGroup class]);
+        
         integration = [[SEGMixpanelIntegration alloc] initWithSettings:@{
             @"trackAllPages" : @1,
             @"setAllTraitsByDefault" : @1
@@ -118,7 +122,36 @@ describe(@"Mixpanel Integration", ^{
             @"age" : @24
         }];
     });
+    
+    
+    it(@"simple group", ^{
+        NSDictionary *groupTraits = @{
+                                      @"groupCity" : @"Cairo",
+                                      @"name" : @"mixPanelTest1Group"
+                                      };
+        [integration group:[SEGPayloadBuilder group:@"groupTest1" withTraits:groupTraits]];
+        [verify(mixpanel) getGroup:@"mixPanelTest1Group" groupID:@"groupTest1"];
+    });
 
+    it(@"simple group without name", ^{
+        NSDictionary *groupTraits = @{
+                                      @"groupCity" : @"Cairo"
+                                      };
+        [integration group:[SEGPayloadBuilder group:@"groupTest2" withTraits:groupTraits]];
+        [verify(mixpanel) getGroup:@"[Segment] Group" groupID:@"groupTest2"];
+    });
+    
+    it(@"simple group setOnce traits", ^{
+        [given([mixpanel getGroup:@"[Segment] Group" groupID:@"groupTest2"]) willReturn:mixpanelGroup];
+        NSDictionary *groupTraits = @{
+                                      @"groupCity" : @"Cairo",
+                                      @"groupCount" : @"20"
+                                      };
+        [integration group:[SEGPayloadBuilder group:@"groupTest2" withTraits:groupTraits]];
+        [verify(mixpanelGroup) setOnce:groupTraits];
+        [verify(mixpanel) getGroup:@"[Segment] Group" groupID:@"groupTest2"];
+    });
+    
     it(@"alias", ^{
         [given([mixpanel distinctId]) willReturn:@"123456"];
         [integration alias:[SEGPayloadBuilder alias:@"prateek"]];
