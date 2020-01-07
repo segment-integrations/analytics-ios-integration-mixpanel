@@ -132,6 +132,18 @@ describe(@"Mixpanel Integration", ^{
         [integration group:[SEGPayloadBuilder group:@"groupTest1" withTraits:groupTraits]];
         [verify(mixpanel) getGroup:@"mixPanelTest1Group" groupID:@"groupTest1"];
     });
+    
+    it(@"complex group", ^{
+        NSDictionary *groupTraits = @{
+                                      @"groupCity" : @"Alexandria",
+                                      @"name" : @"mixPanelTest1Group",
+                                      @"address": @{@"city": @"Alexandria", @"postalCode": @"22314", @"state":@"Virginia", @"street": @"105 N Union St" },
+                                      @"description": @"Art Center",
+                                      @"avatar" : @"https://gravatar.com/avatar/f8b72def445675a558fe68b1cb651da1?s=400&d=robohash&r=x"
+                                      };
+        [integration group:[SEGPayloadBuilder group:@"groupTest1" withTraits:groupTraits]];
+        [verify(mixpanel) getGroup:@"mixPanelTest1Group" groupID:@"groupTest1"];
+    });
 
     it(@"simple group without name", ^{
         NSDictionary *groupTraits = @{

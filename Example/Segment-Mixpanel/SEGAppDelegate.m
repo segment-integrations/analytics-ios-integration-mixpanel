@@ -18,7 +18,7 @@
     
     // Override point for customization after application launch.
     [SEGAnalytics debug:YES];
-    SEGAnalyticsConfiguration *config = [SEGAnalyticsConfiguration configurationWithWriteKey:@"gnjyuUpq7mZYtLM76mwltoiZcDsFpnfY"];
+    SEGAnalyticsConfiguration *config = [SEGAnalyticsConfiguration configurationWithWriteKey:@"YOUR_WRITE_KEY_HERE"];
     
     // Add any of your bundled integrations.
     [config use:[SEGMixpanelIntegrationFactory instance]];
