@@ -7,13 +7,24 @@
 //
 
 #import "SEGAppDelegate.h"
+#import <Analytics/SEGAnalytics.h>
+#import "Segment-Mixpanel/SEGMixpanelIntegrationFactory.h"
 
 
 @implementation SEGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [SEGAnalytics debug:YES];
+       SEGAnalyticsConfiguration *configuration = [SEGAnalyticsConfiguration configurationWithWriteKey:@"YOUR_WRITE_KEY_HERE"];
+
+    configuration.trackApplicationLifecycleEvents = YES;
+    configuration.flushAt = 1;
+    [configuration use:[SEGMixpanelIntegrationFactory instance]];
+    [SEGAnalytics setupWithConfiguration:configuration];
+    [[SEGAnalytics sharedAnalytics] track:@"Mixpanel Application Launched"];
+
+    [[SEGAnalytics sharedAnalytics] flush];
     return YES;
 }
 
