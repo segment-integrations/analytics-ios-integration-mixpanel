@@ -147,16 +147,22 @@
     NSDictionary *traits = [payload traits];
     NSString *groupName = traits[@"name"];
     
-    if(groupName == nil || groupName.length == 0) {
-        groupName = @"[Segment] Group";
+    NSArray *groupIdentifierProperties = [self.settings objectForKey:@"groupIdentifierTraits"];
+    
+    if(groupName == nil || groupName.length == 0 || groupIdentifierProperties.count == 0) {
+        return;
     }
     
     if(traits != nil || traits.count != 0){
-        [[self.mixpanel getGroup:groupName groupID: groupID] setOnce:traits];
+        for (NSString *groupIdentiferProperty in groupIdentifierProperties) {
+            [[self.mixpanel getGroup:groupIdentiferProperty groupID:groupID ] setOnce:traits];
+        }
     }
     
-    [self.mixpanel setGroup:groupName groupID:groupID];
-    SEGLog(@"[Mixpanel setGroup:%@ groupID:%@]", groupName, groupID);
+    for (NSString *groupIdentiferProperty in groupIdentifierProperties) {
+        [self.mixpanel setGroup:groupIdentiferProperty groupID:groupID];
+        SEGLog(@"[Mixpanel setGroup:%@ groupID:%@]", groupIdentiferProperty, groupID);
+    }
     
 }
 

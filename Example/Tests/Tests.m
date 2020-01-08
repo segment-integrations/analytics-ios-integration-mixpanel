@@ -28,7 +28,8 @@ describe(@"Mixpanel Integration", ^{
         
         integration = [[SEGMixpanelIntegration alloc] initWithSettings:@{
             @"trackAllPages" : @1,
-            @"setAllTraitsByDefault" : @1
+            @"setAllTraitsByDefault" : @1,
+            @"groupIdentifierTraits" : @[@"group_id",@"group_name",@"group_idtest2"]
         } andMixpanel:mixpanel];
     });
 
