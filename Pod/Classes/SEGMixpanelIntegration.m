@@ -145,22 +145,21 @@
     
     NSString *groupID = payload.groupId;
     NSDictionary *traits = [payload traits];
-    NSString *groupName = traits[@"name"];
     
     NSArray *groupIdentifierProperties = [self.settings objectForKey:@"groupIdentifierTraits"];
     
-    if(groupName == nil || groupName.length == 0 || groupIdentifierProperties.count == 0) {
+    if(!groupID || groupID.length == 0 || groupIdentifierProperties.count == 0) {
         return;
     }
     
     if(traits != nil || traits.count != 0){
         for (NSString *groupIdentiferProperty in groupIdentifierProperties) {
-            [[self.mixpanel getGroup:groupIdentiferProperty groupID:groupID ] setOnce:traits];
+            [[self.mixpanel getGroup:traits[groupIdentiferProperty] groupID:groupID ] setOnce:traits];
         }
     }
     
     for (NSString *groupIdentiferProperty in groupIdentifierProperties) {
-        [self.mixpanel setGroup:groupIdentiferProperty groupID:groupID];
+        [self.mixpanel setGroup:traits[groupIdentiferProperty] groupID:groupID];
         SEGLog(@"[Mixpanel setGroup:%@ groupID:%@]", groupIdentiferProperty, groupID);
     }
     
