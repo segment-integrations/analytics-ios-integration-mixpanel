@@ -1,15 +1,6 @@
 Change Log
 ==========
 
-Version 1.5.0 *(17th Dec, 2019)*
--------------------------------------------
-*(Upgrade Segment-Mixpanel to 3.5)*
-    
-    * [New](https://github.com/segment-integrations/analytics-ios-integration-mixpanel/pull/47): Upgrade Segment-Mixpanel to 3.5.0.
-
-    * [New] Add support for groups
-
-
 Version 1.4.0 *(12th September, 2019)*
 -------------------------------------------
 *(Upgrade Segment-Mixpanel to 3.4.7)*
