@@ -23,12 +23,13 @@ describe(@"Mixpanel Integration", ^{
         mixpanel = mock([Mixpanel class]);
         mixpanelPeople = mock([MixpanelPeople class]);
         [given([mixpanel people]) willReturn:mixpanelPeople];
-        
+
         mixpanelGroup = mock([MixpanelGroup class]);
-        
+
         integration = [[SEGMixpanelIntegration alloc] initWithSettings:@{
             @"trackAllPages" : @1,
             @"setAllTraitsByDefault" : @1,
+            @"enableEuropeanUnionEndpoint" : @1,
             @"groupIdentifierTraits" : @[@"group_id", @"group_name", @"group_idtest2"]
         } andMixpanel:mixpanel];
     });
@@ -62,7 +63,7 @@ describe(@"Mixpanel Integration", ^{
         }];
         [verify(mixpanelPeople) trackCharge:@19.99];
     });
-    
+
     it(@"track with property increments", ^{
         [integration setSettings:@{
             @"people" : @1,
@@ -74,20 +75,20 @@ describe(@"Mixpanel Integration", ^{
         [verify(mixpanel) track:@"Purchased Item" properties:@{
             @"revenue" : @19.99
         }];
-    });    
+    });
 
     it(@"screen", ^{
         [integration screen:[SEGPayloadBuilder screen:@"Home"]];
 
         [verify(mixpanel) track:@"Viewed Home Screen" properties:@{}];
     });
-    
+
     it(@"screen with consolidatedPageCalls", ^{
         [integration setSettings:@{
             @"consolidatedPageCalls" : @1
         }];
         [integration screen:[SEGPayloadBuilder screen:@"Home"]];
-        
+
         [verify(mixpanel) track:@"Loaded a Screen" properties:@{@"name": @"Home"}];
     });
 
@@ -123,27 +124,27 @@ describe(@"Mixpanel Integration", ^{
             @"age" : @24
         }];
     });
-    
-    
+
+
     it(@"simple group", ^{
         NSDictionary *groupTraits = @{
                                       @"groupCity" : @"Cairo",
                                       @"group_name" : @"mixPanelTest1Group"
                                       };
         [integration group:[SEGPayloadBuilder group:@"groupTest1" withTraits:groupTraits]];
-        
+
         NSDictionary *groupIdentifierTraits = integration.settings[@"groupIdentifierTraits"];
-        
+
         for (NSString *identifierTrait in groupIdentifierTraits) {
             NSString *groupIdentifierVal = groupTraits[identifierTrait];
             if (groupIdentifierVal) {
                  [verify(mixpanel) getGroup:groupIdentifierVal groupID:@"groupTest1"];
             }
-           
+
         }
-        
+
     });
-    
+
     it(@"complex group", ^{
         NSDictionary *groupTraits = @{
                                       @"groupCity" : @"Alexandria",
@@ -153,17 +154,17 @@ describe(@"Mixpanel Integration", ^{
                                       @"avatar" : @"https://gravatar.com/avatar/f8b72def445675a558fe68b1cb651da1?s=400&d=robohash&r=x"
                                       };
         [integration group:[SEGPayloadBuilder group:@"groupTest1" withTraits:groupTraits]];
-        
+
         NSDictionary *groupIdentifierTraits = integration.settings[@"groupIdentifierTraits"];
-        
+
         for (NSString *identifierTrait in groupIdentifierTraits) {
             NSString *groupIdentifierVal = groupTraits[identifierTrait];
             if (groupIdentifierVal) {
                 [verify(mixpanel) getGroup:groupIdentifierVal groupID:@"groupTest1"];
             }
-            
+
         }
-      
+
     });
 
     it(@"simple group without name", ^{
@@ -171,16 +172,16 @@ describe(@"Mixpanel Integration", ^{
                                       @"groupCity" : @"Cairo"
                                       };
         [integration group:[SEGPayloadBuilder group:@"groupTest2" withTraits:groupTraits]];
-        
+
         NSDictionary *groupIdentifierTraits = integration.settings[@"groupIdentifierTraits"];
-        
+
         for (NSString *identifierTrait in groupIdentifierTraits) {
             NSString *groupIdentifierVal = groupTraits[identifierTrait];
              [given([mixpanel getGroup:groupIdentifierVal groupID:@"groupTest2"]) willReturn:nil];
-            
+
         }
     });
-    
+
     it(@"simple group setOnce traits", ^{
         [given([mixpanel getGroup:@"test1" groupID:@"groupTest2"]) willReturn:mixpanelGroup];
         NSDictionary *groupTraits = @{
@@ -189,11 +190,11 @@ describe(@"Mixpanel Integration", ^{
                                       @"group_id" : @"test1"
                                       };
         [integration group:[SEGPayloadBuilder group:@"groupTest2" withTraits:groupTraits]];
-        
+
         [verify(mixpanelGroup) setOnce:groupTraits];
         [verify(mixpanel) getGroup:@"test1" groupID:@"groupTest2"];
     });
-    
+
     it(@"alias", ^{
         [given([mixpanel distinctId]) willReturn:@"123456"];
         [integration alias:[SEGPayloadBuilder alias:@"prateek"]];

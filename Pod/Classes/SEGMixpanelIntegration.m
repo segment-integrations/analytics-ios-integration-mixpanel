@@ -18,10 +18,15 @@
 -(instancetype)initWithSettings:(NSDictionary *)settings andLaunchOptions:(NSDictionary *)launchOptions
 {
 
-    if (self= [super init]) {
+    if (self = [super init]) {
         self.settings = settings;
         NSString *token = [self.settings objectForKey:@"token"];
-        self.mixpanel = [Mixpanel sharedInstanceWithToken: token launchOptions:launchOptions];
+        self.mixpanel = [Mixpanel sharedInstanceWithToken:token launchOptions:launchOptions];
+    }
+    
+    NSString *EUEndpointValue = [self.settings objectForKey:@"enableEuropeanUnionEndpoint"];
+    if ([EUEndpointValue isEqual:@YES]) {
+        self.mixpanel.serverURL =  @"api-eu.mixpanel.com";
     }
     return self;
 }
