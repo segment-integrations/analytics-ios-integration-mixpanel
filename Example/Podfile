@@ -10,7 +10,7 @@ end
 target 'Segment-Mixpanel_Tests' do
   pod "Segment-Mixpanel", :path => "../"
 
-  pod 'OCMockito'
+  pod 'OCMockito', '~> 3.0'
   pod 'Specta'
   pod 'Expecta'
 end
