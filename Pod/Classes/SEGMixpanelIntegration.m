@@ -1,5 +1,6 @@
 #import "SEGMixpanelIntegration.h"
 #import <Analytics/SEGAnalyticsUtils.h>
+#import <MixpanelGroup.h>
 
 
 @implementation SEGMixpanelIntegration
@@ -137,6 +138,31 @@
         SEGLog(@"[[Mixpanel sharedInstance] track:'Viewed %@ Screen' properties:%@]", category, payload.properties);
         [self realTrack:event properties:payload.properties];
     }
+}
+
+
+- (void) group:(SEGGroupPayload *)payload {
+    
+    NSString *groupID = payload.groupId;
+    NSDictionary *traits = [payload traits];
+    
+    NSArray *groupIdentifierProperties = [self.settings objectForKey:@"groupIdentifierTraits"];
+    
+    if(!groupID || groupID.length == 0 || groupIdentifierProperties.count == 0) {
+        return;
+    }
+    
+    if(traits != nil || traits.count != 0){
+        for (NSString *groupIdentiferProperty in groupIdentifierProperties) {
+            [[self.mixpanel getGroup:traits[groupIdentiferProperty] groupID:groupID ] setOnce:traits];
+        }
+    }
+    
+    for (NSString *groupIdentiferProperty in groupIdentifierProperties) {
+        [self.mixpanel setGroup:traits[groupIdentiferProperty] groupID:groupID];
+        SEGLog(@"[Mixpanel setGroup:%@ groupID:%@]", groupIdentiferProperty, groupID);
+    }
+    
 }
 
 + (NSNumber *)extractRevenue:(NSDictionary *)dictionary withKey:(NSString *)revenueKey
