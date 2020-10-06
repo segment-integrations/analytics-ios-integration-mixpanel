@@ -2,9 +2,9 @@
 #import "MixpanelGroup.h"
 
 #if defined(__has_include) && __has_include(<Analytics/SEGAnalytics.h>)
-#import #import <Analytics/SEGAnalyticsUtils.h>
+#import <Analytics/SEGAnalyticsUtils.h>
 #else
-#import #import <Segment/SEGAnalyticsUtils.h>
+#import <Segment/SEGAnalyticsUtils.h>
 #endif
 
 @implementation SEGMixpanelIntegration
