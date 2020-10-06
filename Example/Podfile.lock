@@ -5,8 +5,8 @@ PODS:
   - OCHamcrest (5.4.0)
   - OCMockito (3.0.2):
     - OCHamcrest (~> 5.1)
-  - Segment-Mixpanel (1.4.0):
-    - Analytics (~> 3.0)
+  - Segment-Mixpanel (1.6.1):
+    - Analytics
     - Mixpanel (~> 3.5)
   - Specta (1.0.7)
 
@@ -35,7 +35,7 @@ SPEC CHECKSUMS:
   Mixpanel: 399997670f5452de026449f9e9ecd52eccbb9ff7
   OCHamcrest: 5c1d441c5a82fb18ac17c2aeb52ec1a99edb971b
   OCMockito: 2cb6c2267cbc76537be56281cd47cdb5a7c27541
-  Segment-Mixpanel: 625bb010c65f66acdd976d9db240a420aa67b132
+  Segment-Mixpanel: 05d5021ffa0edc37642980ef44e03748ceb804da
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
 PODFILE CHECKSUM: 6ff827a80dc2a21042246602306af45cb1c9f2a8
