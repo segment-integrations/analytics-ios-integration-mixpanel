@@ -1,5 +1,9 @@
 Change Log
 ==========
+Version 1.7.0 *(7th October, 2020)*
+-------------------------------------------
+* Updates import headers for iOS 14 support.
+
 Version 1.6.0 *(9th January, 2019)*
 -------------------------------------------
     * [New] Add support for enabling Segment to send data to Mixpanel's EU endpoint leveraging a new setting. M.panel EU Endpoint documentation can be found [here](https://developer.mixpanel.com/docs/implement-mixpanel#section-implementing-mixpanel-in-the-european-union-eu).
