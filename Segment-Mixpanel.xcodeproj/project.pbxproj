@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10C33E7D255BE74F0058A5AA /* Segment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C33E7C255BE74F0058A5AA /* Segment.framework */; };
 		C979B8272326E318003E9671 /* Segment_Mixpanel.h in Headers */ = {isa = PBXBuildFile; fileRef = C979B8252326E318003E9671 /* Segment_Mixpanel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C979B8312326E361003E9671 /* SEGMixpanelIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = C979B82D2326E361003E9671 /* SEGMixpanelIntegration.m */; };
 		C979B8322326E361003E9671 /* SEGMixpanelIntegrationFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = C979B82E2326E361003E9671 /* SEGMixpanelIntegrationFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C979B8332326E361003E9671 /* SEGMixpanelIntegration.h in Headers */ = {isa = PBXBuildFile; fileRef = C979B82F2326E361003E9671 /* SEGMixpanelIntegration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C979B8342326E361003E9671 /* SEGMixpanelIntegrationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C979B8302326E361003E9671 /* SEGMixpanelIntegrationFactory.m */; };
-		C979B8382326E44B003E9671 /* Analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C979B8362326E44B003E9671 /* Analytics.framework */; };
 		C979B8392326E44B003E9671 /* Mixpanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C979B8372326E44B003E9671 /* Mixpanel.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10C33E7C255BE74F0058A5AA /* Segment.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Segment.framework; path = Carthage/Build/iOS/Segment.framework; sourceTree = "<group>"; };
 		C979B8222326E318003E9671 /* Segment_Mixpanel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Segment_Mixpanel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C979B8252326E318003E9671 /* Segment_Mixpanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Segment_Mixpanel.h; sourceTree = "<group>"; };
 		C979B8262326E318003E9671 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -24,7 +25,6 @@
 		C979B82E2326E361003E9671 /* SEGMixpanelIntegrationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEGMixpanelIntegrationFactory.h; path = Pod/Classes/SEGMixpanelIntegrationFactory.h; sourceTree = SOURCE_ROOT; };
 		C979B82F2326E361003E9671 /* SEGMixpanelIntegration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEGMixpanelIntegration.h; path = Pod/Classes/SEGMixpanelIntegration.h; sourceTree = SOURCE_ROOT; };
 		C979B8302326E361003E9671 /* SEGMixpanelIntegrationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEGMixpanelIntegrationFactory.m; path = Pod/Classes/SEGMixpanelIntegrationFactory.m; sourceTree = SOURCE_ROOT; };
-		C979B8362326E44B003E9671 /* Analytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Analytics.framework; path = Carthage/Build/iOS/Analytics.framework; sourceTree = "<group>"; };
 		C979B8372326E44B003E9671 /* Mixpanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mixpanel.framework; path = Carthage/Build/iOS/Mixpanel.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -33,7 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C979B8382326E44B003E9671 /* Analytics.framework in Frameworks */,
+				10C33E7D255BE74F0058A5AA /* Segment.framework in Frameworks */,
 				C979B8392326E44B003E9671 /* Mixpanel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,7 +74,7 @@
 		C979B8352326E44B003E9671 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C979B8362326E44B003E9671 /* Analytics.framework */,
+				10C33E7C255BE74F0058A5AA /* Segment.framework */,
 				C979B8372326E44B003E9671 /* Mixpanel.framework */,
 			);
 			name = Frameworks;
