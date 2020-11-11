@@ -35,6 +35,10 @@ SEGAnalyticsConfiguration *config = [SEGAnalyticsConfiguration configurationWith
 
 ```
 
+## Developing
+
+To test locally, use the [Example](./Example) implementation.
+
 ## License
 
 ```

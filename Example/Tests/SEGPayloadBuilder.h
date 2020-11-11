@@ -23,4 +23,6 @@
 
 + (SEGAliasPayload *)alias:(NSString *)newId;
 
++ (SEGGroupPayload *)group:(NSString *) groupId withTraits:(NSDictionary *)traits;
+
 @end

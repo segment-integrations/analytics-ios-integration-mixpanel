@@ -1,6 +1,11 @@
 #import "SEGMixpanelIntegration.h"
-#import <Analytics/SEGAnalyticsUtils.h>
+#import "MixpanelGroup.h"
 
+#if defined(__has_include) && __has_include(<Analytics/SEGAnalytics.h>)
+#import <Analytics/SEGAnalyticsUtils.h>
+#else
+#import <Segment/SEGAnalyticsUtils.h>
+#endif
 
 @implementation SEGMixpanelIntegration
 
@@ -17,10 +22,15 @@
 -(instancetype)initWithSettings:(NSDictionary *)settings andLaunchOptions:(NSDictionary *)launchOptions
 {
 
-    if (self= [super init]) {
+    if (self = [super init]) {
         self.settings = settings;
         NSString *token = [self.settings objectForKey:@"token"];
-        self.mixpanel = [Mixpanel sharedInstanceWithToken: token launchOptions:launchOptions];
+        self.mixpanel = [Mixpanel sharedInstanceWithToken:token launchOptions:launchOptions];
+    }
+    
+    NSString *EUEndpointValue = [self.settings objectForKey:@"enableEuropeanUnionEndpoint"];
+    if ([EUEndpointValue isEqual:@YES]) {
+        self.mixpanel.serverURL =  @"api-eu.mixpanel.com";
     }
     return self;
 }
@@ -116,7 +126,7 @@
         SEGLog(@"[[Mixpanel sharedInstance] track:'Loaded a Screen' properties:%@]", payloadProps);
         return;
     }
-    
+
     if ([(NSNumber *)[self.settings objectForKey:@"trackAllPages"] boolValue]) {
         NSString *event = [[NSString alloc] initWithFormat:@"Viewed %@ Screen", payload.name];
         [self realTrack:event properties:payload.properties];
@@ -137,6 +147,31 @@
         SEGLog(@"[[Mixpanel sharedInstance] track:'Viewed %@ Screen' properties:%@]", category, payload.properties);
         [self realTrack:event properties:payload.properties];
     }
+}
+
+
+- (void) group:(SEGGroupPayload *)payload {
+
+    NSString *groupID = payload.groupId;
+    NSDictionary *traits = [payload traits];
+
+    NSArray *groupIdentifierProperties = [self.settings objectForKey:@"groupIdentifierTraits"];
+
+    if(!groupID || groupID.length == 0 || groupIdentifierProperties.count == 0) {
+        return;
+    }
+
+    if(traits != nil || traits.count != 0){
+        for (NSString *groupIdentiferProperty in groupIdentifierProperties) {
+            [[self.mixpanel getGroup:traits[groupIdentiferProperty] groupID:groupID ] setOnce:traits];
+        }
+    }
+
+    for (NSString *groupIdentiferProperty in groupIdentifierProperties) {
+        [self.mixpanel setGroup:traits[groupIdentiferProperty] groupID:groupID];
+        SEGLog(@"[Mixpanel setGroup:%@ groupID:%@]", groupIdentiferProperty, groupID);
+    }
+
 }
 
 + (NSNumber *)extractRevenue:(NSDictionary *)dictionary withKey:(NSString *)revenueKey
@@ -172,9 +207,9 @@
     if (![self peopleEnabled]) {
         return;
     }
-    
+
     // Increment properties that are listed in the Mixpanel integration settings
-    [self incrementProperties:properties];    
+    [self incrementProperties:properties];
 
     // Extract the revenue from the properties passed in to us.
     NSNumber *revenue = [SEGMixpanelIntegration extractRevenue:properties withKey:@"revenue"];

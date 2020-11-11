@@ -41,4 +41,9 @@
     return [[SEGAliasPayload alloc] initWithNewId:newId context:@{} integrations:@{}];
 }
 
++ (SEGGroupPayload *)group:(NSString *)groupId withTraits:(NSDictionary *)traits
+{
+    return [[SEGGroupPayload alloc] initWithGroupId:groupId traits:traits context:@{} integrations:@{}];
+}
+
 @end
