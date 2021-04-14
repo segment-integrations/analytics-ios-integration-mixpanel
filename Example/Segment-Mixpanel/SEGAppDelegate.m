@@ -7,13 +7,33 @@
 //
 
 #import "SEGAppDelegate.h"
-
+#import <Analytics/SEGAnalytics.h>
+#import <Segment-Mixpanel/SEGMixpanelIntegrationFactory.h>
 
 @implementation SEGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+
+    // Override point for customization after application launch.
+    [SEGAnalytics debug:YES];
+    SEGAnalyticsConfiguration *config = [SEGAnalyticsConfiguration configurationWithWriteKey:@"YOUR_WRITE_KEY_HERE"];
+
+    // Add any of your bundled integrations.
+    config.trackApplicationLifecycleEvents = YES;
+    config.flushAt = 1;
+    [config use:[SEGMixpanelIntegrationFactory instance]];
+    [SEGAnalytics setupWithConfiguration:config];
+
+    [[SEGAnalytics sharedAnalytics] track:@"Mixpanel Application Launched"];
+
+    [[SEGAnalytics sharedAnalytics] identify:@"segment-fake-tester-Mixpanel"
+                                      traits:@{ @"email": @"tool@fake-segment-tester.com" }];
+
+    [[SEGAnalytics sharedAnalytics] group:@"testversion1" traits:@{ @"name": @"test group"}];
+
+
     return YES;
 }
 

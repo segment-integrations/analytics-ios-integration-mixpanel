@@ -1,36 +1,43 @@
 PODS:
-  - Analytics (3.2.6)
-  - Expecta (1.0.3)
-  - Mixpanel (3.0.0):
-    - Mixpanel/Mixpanel (= 3.0.0)
-  - Mixpanel/Mixpanel (3.0.0)
-  - OCHamcrest (5.2.0)
-  - OCMockito (3.0.1):
+  - Analytics (4.0.5)
+  - Expecta (1.0.6)
+  - Mixpanel (3.6.0)
+  - OCHamcrest (5.4.0)
+  - OCMockito (3.0.2):
     - OCHamcrest (~> 5.1)
-  - Segment-Mixpanel (1.2.0):
-    - Analytics (~> 3.0)
-    - Mixpanel (~> 3.0)
-  - Specta (1.0.4)
+  - Segment-Mixpanel (1.6.1):
+    - Analytics
+    - Mixpanel (~> 3.5)
+  - Specta (1.0.7)
 
 DEPENDENCIES:
   - Expecta
-  - OCMockito
+  - OCMockito (~> 3.0)
   - Segment-Mixpanel (from `../`)
   - Specta
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Analytics
+    - Expecta
+    - Mixpanel
+    - OCHamcrest
+    - OCMockito
+    - Specta
+
 EXTERNAL SOURCES:
   Segment-Mixpanel:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  Analytics: ad1c5bdc169866d72afdbc918084d0695010e35a
-  Expecta: 9d1bff6c8b0eeee73a166a2ee898892478927a15
-  Mixpanel: ac92056ee35a961362513ba11049e67cffcaa1f1
-  OCHamcrest: 218dc4022a5e928a275771da70c5dbea9f859287
-  OCMockito: 9eee3c61e42f7cb8aa015d66f8cc16849701d973
-  Segment-Mixpanel: a4c523dbaebecdcfed6a65ecd9c0ea8b430cd8d2
-  Specta: 69bb134672aae190a1379ff91df07dad8dd1f869
+  Analytics: 4bcf052c91e1f3339219e83d6a036fb2bd7c218d
+  Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
+  Mixpanel: 446b6e7713aa34a9a3516ff7648d56551384fc94
+  OCHamcrest: 5c1d441c5a82fb18ac17c2aeb52ec1a99edb971b
+  OCMockito: 2cb6c2267cbc76537be56281cd47cdb5a7c27541
+  Segment-Mixpanel: 05d5021ffa0edc37642980ef44e03748ceb804da
+  Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
-PODFILE CHECKSUM: 507a152874203f544f8656b6532dd0f45dd3c57d
+PODFILE CHECKSUM: 6ff827a80dc2a21042246602306af45cb1c9f2a8
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.8.4
