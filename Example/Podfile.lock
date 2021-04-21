@@ -5,9 +5,9 @@ PODS:
   - OCHamcrest (5.4.0)
   - OCMockito (3.0.2):
     - OCHamcrest (~> 5.1)
-  - Segment-Mixpanel (1.6.1):
+  - Segment-Mixpanel (1.7.2):
     - Analytics
-    - Mixpanel (~> 3.5)
+    - Mixpanel (~> 3.7.1)
   - Specta (1.0.7)
 
 DEPENDENCIES:
