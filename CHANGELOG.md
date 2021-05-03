@@ -1,5 +1,9 @@
 Change Log
 ==========
+Version 1.7.1 *(3rd May, 2021)*
+-------------------------------------------
+* Bumped Mixpanel dependency from 3.5 to 3.7.1.
+
 Version 1.7.0 *(7th October, 2020)*
 -------------------------------------------
 * Updates import headers for iOS 14 support.
