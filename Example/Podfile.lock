@@ -1,11 +1,11 @@
 PODS:
-  - Analytics (4.0.5)
+  - Analytics (4.1.4)
   - Expecta (1.0.6)
   - Mixpanel (3.7.1)
   - OCHamcrest (5.4.0)
   - OCMockito (3.0.2):
     - OCHamcrest (~> 5.1)
-  - Segment-Mixpanel (1.7.1-beta):
+  - Segment-Mixpanel (1.7.1):
     - Analytics
     - Mixpanel (~> 3.7.1)
   - Specta (1.0.7)
@@ -30,14 +30,14 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Analytics: 4bcf052c91e1f3339219e83d6a036fb2bd7c218d
+  Analytics: 7bdc735c456434b4eaa2eacdcf122bb03d51ede7
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   Mixpanel: 34eeb39481da527682a6a838fde78925e1e19097
   OCHamcrest: 5c1d441c5a82fb18ac17c2aeb52ec1a99edb971b
   OCMockito: 2cb6c2267cbc76537be56281cd47cdb5a7c27541
-  Segment-Mixpanel: 6b0fb0d00b42d114dbe033cd990c839ec4bb86a1
+  Segment-Mixpanel: 76fc687a5da663eb4e9942f380076db6f5fe8cf1
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
-PODFILE CHECKSUM: 6ff827a80dc2a21042246602306af45cb1c9f2a8
+PODFILE CHECKSUM: cdf2e7bf38202591b3aca84feb5d55ed32616c6d
 
 COCOAPODS: 1.10.1
