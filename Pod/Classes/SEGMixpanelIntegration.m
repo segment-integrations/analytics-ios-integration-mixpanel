@@ -1,5 +1,5 @@
 #import "SEGMixpanelIntegration.h"
-#import "MixpanelGroup.h"
+#import <Mixpanel/MixpanelGroup.h>
 
 #if defined(__has_include) && __has_include(<Analytics/SEGAnalytics.h>)
 #import <Analytics/SEGAnalyticsUtils.h>
