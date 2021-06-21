@@ -1,5 +1,9 @@
 Change Log
 ==========
+Version 1.7.2 *(21st June, 2021)*
+-------------------------------------------
+* Bumps Mixpanel dependency from 3.7.1 to 3.9.0.
+
 Version 1.7.1 *(3rd May, 2021)*
 -------------------------------------------
 * Bumped Mixpanel dependency from 3.5 to 3.7.1.
