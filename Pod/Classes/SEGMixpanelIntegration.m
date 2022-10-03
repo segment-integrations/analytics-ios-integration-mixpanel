@@ -25,7 +25,9 @@
     if (self = [super init]) {
         self.settings = settings;
         NSString *token = [self.settings objectForKey:@"token"];
-        self.mixpanel = [Mixpanel sharedInstanceWithToken:token launchOptions:launchOptions];
+        self.mixpanel = [Mixpanel sharedInstanceWithToken:(NSString *)token trackAutomaticEvents:false
+                optOutTrackingByDefault:false
+        ];
     }
     
     NSString *EUEndpointValue = [self.settings objectForKey:@"enableEuropeanUnionEndpoint"];
@@ -240,13 +242,7 @@
     SEGLog(@"[[Mixpanel sharedInstance] createAlias:%@ forDistinctID:%@]", payload.theNewId, distinctId);
 }
 
-// Invoked when the device is registered with a push token.
-// Mixpanel uses this to send push messages to the device, so forward it to Mixpanel.
-- (void)registeredForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
-    [[self.mixpanel people] addPushDeviceToken:deviceToken];
-    SEGLog(@"[[[[Mixpanel sharedInstance] people] addPushDeviceToken:%@]", deviceToken);
-}
+
 
 // An internal utility method that checks the settings to see if this event should be incremented in Mixpanel.
 - (BOOL)eventShouldIncrement:(NSString *)event

@@ -23,7 +23,7 @@
 
 + (SEGScreenPayload *)screen:(NSString *)name
 {
-    return [[SEGScreenPayload alloc] initWithName:name properties:@{} context:@{} integrations:@{}];
+    return [[SEGScreenPayload alloc] name];
 }
 
 + (SEGIdentifyPayload *)identify:(NSString *)userId
