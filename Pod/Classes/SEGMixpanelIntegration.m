@@ -32,7 +32,7 @@
     
     NSString *EUEndpointValue = [self.settings objectForKey:@"enableEuropeanUnionEndpoint"];
     if ([EUEndpointValue isEqual:@YES]) {
-        self.mixpanel.serverURL =  @"api-eu.mixpanel.com";
+        self.mixpanel.serverURL =  @"https://api-eu.mixpanel.com";
     }
     return self;
 }
